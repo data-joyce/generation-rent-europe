@@ -1,0 +1,57 @@
+{
+ "python": "3.13.17",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "libraries": {
+  "pandas": "3.1.0",
+  "numpy": "2.5.4",
+  "duckdb": "2.0.0",
+  "matplotlib": "3.11.2",
+  "nbconvert": "7.17.2",
+  "nbformat": "5.11.1",
+  "ipykernel": "7.4.0",
+  "jupyter_client": "8.10.0"
+ },
+ "requirements_files_in_project": [
+  "requirements.txt"
+ ],
+ "randomness_or_clock_in_pipeline": "none found (no seeds needed)",
+ "fresh_rerun_outputs_identical": {
+  "city_rent.csv": true,
+  "country_year.csv": true,
+  "dim_country.csv": true,
+  "dim_year.csv": true,
+  "hicp_monthly.csv": true,
+  "long_age_leave.csv": true,
+  "long_city_rents.csv": true,
+  "long_hicp.csv": true,
+  "long_hpi_a.csv": true,
+  "long_hpi_q.csv": true,
+  "long_net_earn.csv": true,
+  "long_overburden.csv": true,
+  "long_ptir.csv": true,
+  "long_with_parents.csv": true
+ },
+ "all_identical": true,
+ "run_in_original_layout": {
+  "exit_code": 0,
+  "first_error_lines": []
+ },
+ "original_layout_outputs_identical": {
+  "city_rent.csv": true,
+  "country_year.csv": true,
+  "dim_country.csv": true,
+  "dim_year.csv": true,
+  "hicp_monthly.csv": true,
+  "long_age_leave.csv": true,
+  "long_city_rents.csv": true,
+  "long_hicp.csv": true,
+  "long_hpi_a.csv": true,
+  "long_hpi_q.csv": true,
+  "long_net_earn.csv": true,
+  "long_overburden.csv": true,
+  "long_ptir.csv": true,
+  "long_with_parents.csv": true
+ },
+ "original_layout_all_identical": true,
+ "external_inputs_frozen": "Raw Eurostat CSVs are stored locally (download date 2026-11-04 in each README); re-downloading would give newer data, not the same."
+}

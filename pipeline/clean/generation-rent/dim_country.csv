@@ -1,0 +1,53 @@
+﻿geo,country,is_eu27,is_aggregate,iso2,in_country_year
+AL,Albania,False,False,AL,False
+AT,Austria,True,False,AT,True
+BA,Bosnia and Herzegovina,False,False,BA,False
+BE,Belgium,True,False,BE,True
+BG,Bulgaria,True,False,BG,True
+CH,Switzerland,False,False,CH,False
+CY,Cyprus,True,False,CY,True
+CZ,Czechia,True,False,CZ,True
+DE,Germany,True,False,DE,True
+DK,Denmark,True,False,DK,True
+EE,Estonia,True,False,EE,True
+EL,Greece,True,False,GR,True
+ES,Spain,True,False,ES,True
+FI,Finland,True,False,FI,True
+FR,France,True,False,FR,True
+GE,Georgia,False,False,GE,False
+HR,Croatia,True,False,HR,True
+HU,Hungary,True,False,HU,True
+IE,Ireland,True,False,IE,True
+IS,Iceland,False,False,IS,False
+IT,Italy,True,False,IT,True
+JP,Japan,False,False,JP,False
+LT,Lithuania,True,False,LT,True
+LU,Luxembourg,True,False,LU,True
+LV,Latvia,True,False,LV,True
+ME,Montenegro,False,False,ME,False
+MK,North Macedonia,False,False,MK,False
+MT,Malta,True,False,MT,True
+NL,Netherlands,True,False,NL,True
+NO,Norway,False,False,NO,False
+PL,Poland,True,False,PL,True
+PT,Portugal,True,False,PT,True
+RO,Romania,True,False,RO,True
+RS,Serbia,False,False,RS,False
+SE,Sweden,True,False,SE,True
+SI,Slovenia,True,False,SI,True
+SK,Slovakia,True,False,SK,True
+TR,Türkiye,False,False,TR,False
+UK,United Kingdom,False,False,GB,False
+US,United States,False,False,US,False
+XK,Kosovo*,False,False,XK,False
+EA,"Euro area (EA11-1999, EA12-2001, EA13-2007, EA15-2008, EA16-2009, EA17-2011, EA18-2014, EA19-2015, EA20-2023, EA21-2026)",False,True,,False
+EA18,Euro area - 18 countries (2014),False,True,,False
+EA19,Euro area - 19 countries  (2015-2022),False,True,,False
+EA20,Euro area – 20 countries (2023-2025),False,True,,False
+EA21,Euro area – 21 countries (from 2026),False,True,,False
+EEA,"European Economic Area (EEA18-1995, EEA28-2004, EEA30-2007, EEA31-2013, EEA30-2020)",False,True,,False
+EU,"European Union (EU6-1958, EU9-1973, EU10-1981, EU12-1986, EU15-1995, EU25-2004, EU27-2007, EU28-2013, EU27-2020)",False,True,,False
+EU15,European Union - 15 countries (1995-2004),False,True,,False
+EU27_2007,European Union - 27 countries (2007-2013),False,True,,False
+EU27_2020,EU average (27),False,True,,True
+EU28,European Union - 28 countries (2013-2020),False,True,,False

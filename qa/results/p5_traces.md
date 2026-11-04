@@ -1,0 +1,14 @@
+Random seed: 20261104
+
+| # | Measure | Geo | Year | Raw source | Long table | Final table | Result |
+|---|---|---|---|---|---|---|---|
+| 1 | house_price_index_2015 | FI | 2018 | eurostat-house-price-index/prc_hpi_a.csv line 4202: OBS_VALUE='103.34' OBS_FLAG='' | long_hpi_a.csv line 4202: value=103.34 flag=- | country_year.csv line 246: house_price_index_2015=103.34 flag=- | MATCH |
+| 2 | net_earnings_eur | LT | 2005 | eurostat-net-earnings/earn_nt_net.csv line 29406: OBS_VALUE='3137.2' OBS_FLAG='' | long_net_earn.csv line 29406: value=3137.2 flag=- | country_year.csv line 359: net_earnings_eur=3137.2 flag=- | MATCH |
+| 3 | net_earnings_pps | LV | 2012 | eurostat-net-earnings/earn_nt_net.csv line 160919: OBS_VALUE='7395.32' OBS_FLAG='' | long_net_earn.csv line 160919: value=7395.32 flag=- | country_year.csv line 408: net_earnings_pps=7395.32 flag=- | MATCH |
+| 4 | price_to_income_vs_lt_avg | RO | 2011 | eurostat-house-price-to-income/tipsho60.csv line 1371: OBS_VALUE='100.59' OBS_FLAG='' | long_ptir.csv line 1371: value=100.59 flag=- | country_year.csv line 512: price_to_income_vs_lt_avg=100.59 flag=- | MATCH |
+| 5 | overburden_18_24 | AT | 2025 | eurostat-housing-cost-overburden/ilc_lvho07a.csv line 106272: OBS_VALUE='4.5' OBS_FLAG='' | long_overburden.csv line 106272: value=4.5 flag=- | country_year.csv line 22: overburden_18_24=4.5 flag=- | MATCH |
+| 6 | age_leaving_home | FI | 2012 | eurostat-age-leaving-home/yth_demo_030.csv line 1858: OBS_VALUE='21.9' OBS_FLAG='' | long_age_leave.csv line 1858: value=21.9 flag=- | country_year.csv line 240: age_leaving_home=21.9 flag=- | MATCH |
+| 7 | pct_18_34_with_parents | LV | 2012 | eurostat-young-adults-living-with-parents/ilc_lvps08.csv line 11896: OBS_VALUE='54.2' OBS_FLAG='' | long_with_parents.csv line 11896: value=54.2 flag=- | country_year.csv line 408: pct_18_34_with_parents=54.2 flag=- | MATCH |
+| 8 | hicp_rent_index | AT | 2011 | prc_hicp_minr.csv lines 27684-27695: 12 months = [83.97, 84.17, 84.36, 84.56, 84.95, 85.34, 85.73, 86.31, 86.7, 86.9, 87.1, 87.1] | long_hicp.csv: 12 monthly rows, same values: True | country_year.csv line 8: hicp_rent_index=85.59916666666668 ; hand mean (statistics.fmean)=85.59916666666668 | MATCH |
+| 9 | real_house_price_index_2015 | CY | 2022 | prc_hpi_a.csv line 3939: HPI=123.22 ; prc_hicp_minr.csv TOTAL I15 12 months, mean=110.17416666666666 | (derived only in country_year) | country_year.csv line 82: real_house_price_index_2015=111.84110007639418 ; hand calc=111.84110007639418 | MATCH |
+| 10 | rent_share_of_net_salary_pct | IE_CAP | 2014 | prc_colc_rents.csv line 268: rent=1150 ; earn_nt_net.csv line 29315: net annual=31687.39 flag='' | net/12=2640.6158333333333 ; share unrounded=43.5504470390272 | city_rent.csv line 268: rent=1150 net_salary_month=2640.6158333333333 share=43.6 | MATCH |

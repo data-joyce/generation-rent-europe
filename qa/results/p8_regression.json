@@ -1,0 +1,160 @@
+{
+ "long_tables_identical": {
+  "long_age_leave.csv": true,
+  "long_city_rents.csv": true,
+  "long_hicp.csv": true,
+  "long_hpi_a.csv": true,
+  "long_hpi_q.csv": true,
+  "long_net_earn.csv": true,
+  "long_overburden.csv": true,
+  "long_ptir.csv": true,
+  "long_with_parents.csv": true
+ },
+ "country_year": {
+  "rows_old": 588,
+  "rows_new": 588,
+  "keys_only_old": 0,
+  "keys_only_new": 0,
+  "changed_cells_by_column": {
+   "iso2": 21
+  },
+  "columns_added": [],
+  "columns_removed": [],
+  "only_iso2_changed": true,
+  "iso2_changes_all_EU27_2020_to_blank": true
+ },
+ "city_rent": {
+  "rows_old": 552,
+  "rows_new": 552,
+  "keys_only_old": 0,
+  "keys_only_new": 0,
+  "changed_cells_by_column": {},
+  "columns_added": [
+   "is_capital"
+  ],
+  "columns_removed": [],
+  "no_existing_cell_changed": true,
+  "is_capital_equals_CAP_suffix": true
+ },
+ "dim_country": {
+  "rows_old": 52,
+  "rows_new": 52,
+  "keys_only_old": 0,
+  "keys_only_new": 0,
+  "changed_cells_by_column": {
+   "is_aggregate": 1,
+   "iso2": 11
+  },
+  "columns_added": [
+   "in_country_year"
+  ],
+  "columns_removed": [],
+  "changes": {
+   "is_aggregate": [
+    [
+     "EEA",
+     "False",
+     "True"
+    ]
+   ],
+   "iso2": [
+    [
+     "EA",
+     "EA",
+     ""
+    ],
+    [
+     "EA18",
+     "EA18",
+     ""
+    ],
+    [
+     "EA19",
+     "EA19",
+     ""
+    ],
+    [
+     "EA20",
+     "EA20",
+     ""
+    ],
+    [
+     "EA21",
+     "EA21",
+     ""
+    ],
+    [
+     "EEA",
+     "EEA",
+     ""
+    ],
+    [
+     "EU",
+     "EU",
+     ""
+    ],
+    [
+     "EU15",
+     "EU15",
+     ""
+    ],
+    [
+     "EU27_2007",
+     "EU27_2007",
+     ""
+    ],
+    [
+     "EU27_2020",
+     "EU27_2020",
+     ""
+    ],
+    [
+     "EU28",
+     "EU28",
+     ""
+    ]
+   ]
+  },
+  "is_aggregate_change_is_only_EEA_False_to_True": true,
+  "iso2_changes_only_on_aggregates_to_blank": true,
+  "unchanged_columns_ok": true
+ },
+ "hicp_monthly": {
+  "old_long_rows": 196331,
+  "new_wide_rows": 99856,
+  "filled_cells_in_new": 196331,
+  "old_units": [
+   "I15",
+   "RCH_A"
+  ],
+  "cells_only_in_old": 0,
+  "cells_only_in_new": 0,
+  "values_equal": 196331,
+  "values_text_identical": 196331,
+  "flags_equal": 196331,
+  "labels_equal": 196331,
+  "compared": 196331
+ },
+ "sql_blocks": {
+  "old": 37,
+  "new": 37,
+  "changed": [
+   "? | (top)",
+   "sql\\generation_rent\\00_setup.sql | Check: what got loaded?",
+   "sql\\generation_rent\\01_explore.sql | 5. Latest year: where do young people leave home latest? (filter out the EU average row)",
+   "sql\\generation_rent\\02_prices_vs_earnings.sql | 1. Growth of house prices vs net earnings, 2015 → 2023, by country",
+   "sql\\generation_rent\\03_rent_vs_salary.sql | 2. How much have capital rents risen since 2015? (levels: the earnings break doesn't matter here)",
+   "sql\\generation_rent\\04_leaving_home.sql | 1. Latest year side by side: age leaving home, % living with parents, housing stress of 18-24s",
+   "sql\\generation_rent\\04_leaving_home.sql | 3. Correlations across countries (-1 … +1). Which factor moves most with the age of leaving home?",
+   "sql\\generation_rent\\04_leaving_home.sql | 4. Countries above / below the EU average age (scalar subquery)",
+   "sql\\generation_rent\\05_portugal_vs_eu.sql | 3. Latest monthly inflation (annual rate, %) for rents, food, energy and everything, PT vs EU"
+  ],
+  "only_new_titles": [
+   "sql\\generation_rent\\01_explore.sql | 6. Which cities are in the city rent table, and from when? (not all are capitals: see is_capital)"
+  ],
+  "only_old_titles": [
+   "sql\\generation_rent\\01_explore.sql | 6. Which capitals are in the city rent table, and from when?"
+  ],
+  "unchanged": 27
+ }
+}

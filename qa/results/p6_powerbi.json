@@ -1,0 +1,569 @@
+{
+ "country_year": {
+  "rows": 588,
+  "columns": 25,
+  "primary_key": [
+   "geo",
+   "year"
+  ],
+  "pk_duplicates": 0,
+  "pk_nulls": 0,
+  "format": {
+   "utf8_bom": true,
+   "valid_utf8": true,
+   "line_endings": "CRLF",
+   "delimiter": ",",
+   "semicolons_in_file": 0,
+   "decimal_comma_values": 0,
+   "index_like_columns": [],
+   "bad_column_names": [],
+   "non_ascii_in_data": ""
+  },
+  "column_types": {
+   "geo": {
+    "inferred": "text",
+    "blanks": 0,
+    "distinct": 28,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "country": {
+    "inferred": "text",
+    "blanks": 0,
+    "distinct": 28,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "iso2": {
+    "inferred": "text",
+    "blanks": 21,
+    "distinct": 28,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "year": {
+    "inferred": "integer",
+    "blanks": 0,
+    "distinct": 21,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "house_price_index_2015": {
+    "inferred": "decimal",
+    "blanks": 59,
+    "distinct": 484,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "house_price_index_2015_flag": {
+    "inferred": "text",
+    "blanks": 577,
+    "distinct": 4,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "net_earnings_eur": {
+    "inferred": "decimal",
+    "blanks": 30,
+    "distinct": 559,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "net_earnings_eur_flag": {
+    "inferred": "text",
+    "blanks": 560,
+    "distinct": 2,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "net_earnings_pps": {
+    "inferred": "decimal",
+    "blanks": 30,
+    "distinct": 559,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "net_earnings_pps_flag": {
+    "inferred": "text",
+    "blanks": 560,
+    "distinct": 2,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "price_to_income_vs_lt_avg": {
+    "inferred": "decimal",
+    "blanks": 0,
+    "distinct": 561,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "price_to_income_vs_lt_avg_flag": {
+    "inferred": "text",
+    "blanks": 516,
+    "distinct": 6,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "overburden_total": {
+    "inferred": "decimal",
+    "blanks": 19,
+    "distinct": 176,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "overburden_total_flag": {
+    "inferred": "text",
+    "blanks": 551,
+    "distinct": 6,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "overburden_18_24": {
+    "inferred": "decimal",
+    "blanks": 19,
+    "distinct": 225,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "overburden_18_24_flag": {
+    "inferred": "text",
+    "blanks": 551,
+    "distinct": 6,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "overburden_25_29": {
+    "inferred": "decimal",
+    "blanks": 19,
+    "distinct": 201,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "overburden_25_29_flag": {
+    "inferred": "text",
+    "blanks": 551,
+    "distinct": 6,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "age_leaving_home": {
+    "inferred": "decimal",
+    "blanks": 10,
+    "distinct": 118,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "age_leaving_home_flag": {
+    "inferred": "text",
+    "blanks": 536,
+    "distinct": 2,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "pct_18_34_with_parents": {
+    "inferred": "decimal",
+    "blanks": 12,
+    "distinct": 348,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "pct_18_34_with_parents_flag": {
+    "inferred": "text",
+    "blanks": 561,
+    "distinct": 4,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "hicp_rent_index": {
+    "inferred": "decimal",
+    "blanks": 0,
+    "distinct": 560,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "hicp_all_index": {
+    "inferred": "decimal",
+    "blanks": 0,
+    "distinct": 562,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "real_house_price_index_2015": {
+    "inferred": "decimal",
+    "blanks": 59,
+    "distinct": 510,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   }
+  },
+  "year_range": [
+   2005,
+   2025
+  ],
+  "year_gaps": []
+ },
+ "city_rent": {
+  "rows": 552,
+  "columns": 9,
+  "primary_key": [
+   "city_geo",
+   "year"
+  ],
+  "pk_duplicates": 0,
+  "pk_nulls": 0,
+  "format": {
+   "utf8_bom": true,
+   "valid_utf8": true,
+   "line_endings": "CRLF",
+   "delimiter": ",",
+   "semicolons_in_file": 0,
+   "decimal_comma_values": 0,
+   "index_like_columns": [],
+   "bad_column_names": [],
+   "non_ascii_in_data": "èëøü"
+  },
+  "column_types": {
+   "city_geo": {
+    "inferred": "text",
+    "blanks": 0,
+    "distinct": 44,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "city": {
+    "inferred": "text",
+    "blanks": 0,
+    "distinct": 44,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "country_geo": {
+    "inferred": "text",
+    "blanks": 0,
+    "distinct": 38,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "is_capital": {
+    "inferred": "boolean",
+    "blanks": 0,
+    "distinct": 2,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "year": {
+    "inferred": "integer",
+    "blanks": 0,
+    "distinct": 13,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "rent_1bed_eur_month": {
+    "inferred": "integer",
+    "blanks": 0,
+    "distinct": 103,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "net_salary_eur_month": {
+    "inferred": "decimal",
+    "blanks": 90,
+    "distinct": 400,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "rent_share_of_net_salary_pct": {
+    "inferred": "decimal",
+    "blanks": 90,
+    "distinct": 321,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "net_earnings_eur_flag": {
+    "inferred": "text",
+    "blanks": 523,
+    "distinct": 2,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   }
+  },
+  "year_range": [
+   2013,
+   2025
+  ],
+  "year_gaps": []
+ },
+ "dim_country": {
+  "rows": 52,
+  "columns": 6,
+  "primary_key": [
+   "geo"
+  ],
+  "pk_duplicates": 0,
+  "pk_nulls": 0,
+  "format": {
+   "utf8_bom": true,
+   "valid_utf8": true,
+   "line_endings": "CRLF",
+   "delimiter": ",",
+   "semicolons_in_file": 0,
+   "decimal_comma_values": 0,
+   "index_like_columns": [],
+   "bad_column_names": [],
+   "non_ascii_in_data": "ü–"
+  },
+  "column_types": {
+   "geo": {
+    "inferred": "text",
+    "blanks": 0,
+    "distinct": 52,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "country": {
+    "inferred": "text",
+    "blanks": 0,
+    "distinct": 52,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "is_eu27": {
+    "inferred": "boolean",
+    "blanks": 0,
+    "distinct": 2,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "is_aggregate": {
+    "inferred": "boolean",
+    "blanks": 0,
+    "distinct": 2,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "iso2": {
+    "inferred": "text",
+    "blanks": 11,
+    "distinct": 42,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "in_country_year": {
+    "inferred": "boolean",
+    "blanks": 0,
+    "distinct": 2,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   }
+  }
+ },
+ "dim_year": {
+  "rows": 31,
+  "columns": 3,
+  "primary_key": [
+   "year"
+  ],
+  "pk_duplicates": 0,
+  "pk_nulls": 0,
+  "format": {
+   "utf8_bom": true,
+   "valid_utf8": true,
+   "line_endings": "CRLF",
+   "delimiter": ",",
+   "semicolons_in_file": 0,
+   "decimal_comma_values": 0,
+   "index_like_columns": [],
+   "bad_column_names": [],
+   "non_ascii_in_data": ""
+  },
+  "column_types": {
+   "year": {
+    "inferred": "integer",
+    "blanks": 0,
+    "distinct": 31,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "earnings_series": {
+    "inferred": "text",
+    "blanks": 0,
+    "distinct": 2,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "in_country_year": {
+    "inferred": "boolean",
+    "blanks": 0,
+    "distinct": 2,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   }
+  }
+ },
+ "hicp_monthly": {
+  "rows": 99856,
+  "columns": 10,
+  "primary_key": [
+   "geo",
+   "coicop18",
+   "month"
+  ],
+  "pk_duplicates": 0,
+  "pk_nulls": 0,
+  "format": {
+   "utf8_bom": true,
+   "valid_utf8": true,
+   "line_endings": "CRLF",
+   "delimiter": ",",
+   "semicolons_in_file": 0,
+   "decimal_comma_values": 0,
+   "index_like_columns": [],
+   "bad_column_names": [],
+   "non_ascii_in_data": ""
+  },
+  "column_types": {
+   "geo": {
+    "inferred": "text",
+    "blanks": 0,
+    "distinct": 28,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "coicop18": {
+    "inferred": "text",
+    "blanks": 0,
+    "distinct": 10,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "coicop18_label": {
+    "inferred": "text",
+    "blanks": 0,
+    "distinct": 10,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "month": {
+    "inferred": "year-month text",
+    "blanks": 0,
+    "distinct": 370,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "date": {
+    "inferred": "ISO date (yyyy-mm-dd)",
+    "blanks": 0,
+    "distinct": 370,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "year": {
+    "inferred": "integer",
+    "blanks": 0,
+    "distinct": 31,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "index_2015": {
+    "inferred": "decimal",
+    "blanks": 21,
+    "distinct": 15209,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "index_2015_flag": {
+    "inferred": "text",
+    "blanks": 90359,
+    "distinct": 5,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "annual_rate_pct": {
+    "inferred": "decimal",
+    "blanks": 3360,
+    "distinct": 1399,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   },
+   "annual_rate_pct_flag": {
+    "inferred": "text",
+    "blanks": 90309,
+    "distinct": 5,
+    "mixed_numeric_and_text": false,
+    "leading_or_trailing_space": 0
+   }
+  },
+  "has_unit_column (should be False after pivot)": false,
+  "time_range": [
+   "1996-01",
+   "2026-10"
+  ],
+  "rows_in_latest_month": 21,
+  "year_range": [
+   1996,
+   2026
+  ],
+  "year_gaps": []
+ },
+ "foreign_keys": {
+  "country_year.geo -> dim_country.geo": {
+   "rows": 588,
+   "orphans": 0,
+   "orphan_values": {}
+  },
+  "city_rent.country_geo -> dim_country.geo": {
+   "rows": 552,
+   "orphans": 0,
+   "orphan_values": {}
+  },
+  "hicp_monthly.geo -> dim_country.geo": {
+   "rows": 99856,
+   "orphans": 0,
+   "orphan_values": {}
+  },
+  "country_year.year -> dim_year.year": {
+   "rows": 588,
+   "orphans": 0,
+   "orphan_values": {}
+  },
+  "city_rent.year -> dim_year.year": {
+   "rows": 552,
+   "orphans": 0,
+   "orphan_values": {}
+  },
+  "hicp_monthly.year -> dim_year.year": {
+   "rows": 99856,
+   "orphans": 0,
+   "orphan_values": {}
+  }
+ },
+ "dim_country_rows_not_in_country_year": [
+  "AL",
+  "BA",
+  "CH",
+  "EA",
+  "EA18",
+  "EA19",
+  "EA20",
+  "EA21",
+  "EEA",
+  "EU",
+  "EU15",
+  "EU27_2007",
+  "EU28",
+  "GE",
+  "IS",
+  "JP",
+  "ME",
+  "MK",
+  "NO",
+  "RS",
+  "TR",
+  "UK",
+  "US",
+  "XK"
+ ],
+ "dim_country_iso2_non_iso": [],
+ "dim_country_iso2_blank_only_for_aggregates": true,
+ "country_year_country_iso2_consistent_with_dim": true
+}

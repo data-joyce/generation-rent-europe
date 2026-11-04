@@ -1,0 +1,853 @@
+{
+ "country_year_keys": {
+  "final_rows": 588,
+  "recomputed_rows": 588,
+  "keys_only_in_final": [],
+  "keys_only_in_recomputed": []
+ },
+ "country_year_cells": {
+  "house_price_index_2015": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "house_price_index_2015_flag": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "net_earnings_eur": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "net_earnings_eur_flag": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "net_earnings_pps": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "net_earnings_pps_flag": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "price_to_income_vs_lt_avg": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "price_to_income_vs_lt_avg_flag": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "overburden_total": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "overburden_total_flag": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "overburden_18_24": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "overburden_18_24_flag": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "overburden_25_29": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "overburden_25_29_flag": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "age_leaving_home": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "age_leaving_home_flag": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "pct_18_34_with_parents": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "pct_18_34_with_parents_flag": {
+   "exact": 588,
+   "mismatch": 0,
+   "null_mismatch": 0,
+   "max_abs_diff": 0.0,
+   "examples": []
+  },
+  "hicp_rent_index": {
+   "exact": 354,
+   "mismatch": 234,
+   "null_mismatch": 0,
+   "max_abs_diff": 4.263256414560601e-14,
+   "examples": [
+    "AT 2007: final='75.20833333333333' recomputed=75.20833333333334",
+    "AT 2009: final='79.74416666666667' recomputed=79.74416666666666",
+    "AT 2012: final='89.3575' recomputed=89.35750000000002"
+   ]
+  },
+  "hicp_all_index": {
+   "exact": 369,
+   "mismatch": 219,
+   "null_mismatch": 0,
+   "max_abs_diff": 4.263256414560601e-14,
+   "examples": [
+    "AT 2007: final='85.52916666666665' recomputed=85.52916666666668",
+    "AT 2013: final='97.77333333333333' recomputed=97.77333333333331",
+    "AT 2018: final='105.41166666666668' recomputed=105.41166666666669"
+   ]
+  },
+  "real_house_price_index_2015": {
+   "exact": 425,
+   "mismatch": 163,
+   "null_mismatch": 0,
+   "max_abs_diff": 5.684341886080802e-14,
+   "examples": [
+    "AT 2013: final='93.27696713486978' recomputed=93.27696713486979",
+    "AT 2018: final='112.729457523677' recomputed=112.72945752367698",
+    "AT 2019: final='117.74731266552423' recomputed=117.7473126655242"
+   ]
+  }
+ },
+ "country_year_labels": {
+  "country_label_mismatches": [],
+  "iso2_mismatches": [],
+  "EU27_2020 country label": [
+   "EU average (27)"
+  ]
+ },
+ "reconciliation": {
+  "house_price_index_2015": {
+   "raw_count": 529,
+   "final_count": 529,
+   "raw_sum_fsum": 64434.83,
+   "final_sum_fsum": 64434.83,
+   "sums_equal": true
+  },
+  "net_earnings_eur": {
+   "raw_count": 558,
+   "final_count": 558,
+   "raw_sum_fsum": 11260996.09,
+   "final_sum_fsum": 11260996.09,
+   "sums_equal": true
+  },
+  "net_earnings_pps": {
+   "raw_count": 558,
+   "final_count": 558,
+   "raw_sum_fsum": 10981065.35,
+   "final_sum_fsum": 10981065.35,
+   "sums_equal": true
+  },
+  "price_to_income_vs_lt_avg": {
+   "raw_count": 588,
+   "final_count": 588,
+   "raw_sum_fsum": 59390.32,
+   "final_sum_fsum": 59390.32,
+   "sums_equal": true
+  },
+  "overburden_total": {
+   "raw_count": 569,
+   "final_count": 569,
+   "raw_sum_fsum": 5070.4,
+   "final_sum_fsum": 5070.4,
+   "sums_equal": true
+  },
+  "overburden_18_24": {
+   "raw_count": 569,
+   "final_count": 569,
+   "raw_sum_fsum": 6334.4,
+   "final_sum_fsum": 6334.4,
+   "sums_equal": true
+  },
+  "overburden_25_29": {
+   "raw_count": 569,
+   "final_count": 569,
+   "raw_sum_fsum": 6016.4,
+   "final_sum_fsum": 6016.4,
+   "sums_equal": true
+  },
+  "age_leaving_home": {
+   "raw_count": 578,
+   "final_count": 578,
+   "raw_sum_fsum": 15458.8,
+   "final_sum_fsum": 15458.8,
+   "sums_equal": true
+  },
+  "pct_18_34_with_parents": {
+   "raw_count": 576,
+   "final_count": 576,
+   "raw_sum_fsum": 28920.0,
+   "final_sum_fsum": 28920.0,
+   "sums_equal": true
+  },
+  "hicp_rent_index": {
+   "raw_count": 588,
+   "final_count": 588,
+   "raw_sum_fsum": 60437.32666666667,
+   "final_sum_fsum": 60437.32666666667,
+   "sums_equal": true,
+   "monthly_rows_2005_2025": 7056,
+   "check: 12 x annual rows == monthly rows": true,
+   "sum(12 x annual avg) vs sum(months), abs diff": 1.7462298274040222e-09
+  },
+  "hicp_all_index": {
+   "raw_count": 588,
+   "final_count": 588,
+   "raw_sum_fsum": 60612.925833333335,
+   "final_sum_fsum": 60612.925833333335,
+   "sums_equal": true,
+   "monthly_rows_2005_2025": 7056,
+   "check: 12 x annual rows == monthly rows": true,
+   "sum(12 x annual avg) vs sum(months), abs diff": 1.3969838619232178e-09
+  },
+  "hpi_blank_raw_rows_in_scope": 38
+ },
+ "eu_average_within_member_range": {
+  "house_price_index_2015": "always inside member range",
+  "net_earnings_eur": "always inside member range",
+  "net_earnings_pps": "always inside member range",
+  "price_to_income_vs_lt_avg": "always inside member range",
+  "overburden_total": "always inside member range",
+  "overburden_18_24": "always inside member range",
+  "overburden_25_29": "always inside member range",
+  "age_leaving_home": "always inside member range",
+  "pct_18_34_with_parents": "always inside member range",
+  "hicp_rent_index": "always inside member range",
+  "hicp_all_index": "always inside member range"
+ },
+ "city_rent": {
+  "rows_final": 552,
+  "rows_recomputed": 552,
+  "rent_exact": 552,
+  "salary_exact": 552,
+  "flag_exact": 552,
+  "city_label_exact": 552,
+  "is_capital_exact": 552,
+  "share_vs_round_half_even": 462,
+  "share_vs_round_half_up": 462,
+  "share_null_match": 90,
+  "rows_with_null_share": 90,
+  "rounding_sensitive_rows": []
+ },
+ "dim_country": {
+  "rows": 52,
+  "distinct_geo": 52,
+  "is_eu27_true": [
+   "AT",
+   "BE",
+   "BG",
+   "CY",
+   "CZ",
+   "DE",
+   "DK",
+   "EE",
+   "EL",
+   "ES",
+   "FI",
+   "FR",
+   "HR",
+   "HU",
+   "IE",
+   "IT",
+   "LT",
+   "LU",
+   "LV",
+   "MT",
+   "NL",
+   "PL",
+   "PT",
+   "RO",
+   "SE",
+   "SI",
+   "SK"
+  ],
+  "is_eu27_matches_official_list": true,
+  "is_aggregate_true": [
+   "EA",
+   "EA18",
+   "EA19",
+   "EA20",
+   "EA21",
+   "EEA",
+   "EU",
+   "EU15",
+   "EU27_2007",
+   "EU27_2020",
+   "EU28"
+  ],
+  "is_aggregate_matches_hand_list": true,
+  "aggregates_with_iso2": [],
+  "countries_iso2_ok": true,
+  "in_country_year_matches_country_year_geos": true,
+  "city_rent_country_geo_missing_in_dim": [],
+  "country_year_geo_missing_in_dim": []
+ },
+ "hicp_monthly": {
+  "rows_final": 99856,
+  "rows_recomputed": 99856,
+  "max_raw_rows_per_key (must be <= 2)": 2,
+  "keys_only_in_final": 0,
+  "index_exact": 99856,
+  "rate_exact": 99856,
+  "flags_exact": 99856,
+  "label_exact": 99856,
+  "date_and_year_exact": 99856,
+  "filled_cells_final": 196331,
+  "raw_rows_in_scope": 196331
+ },
+ "dim_year": {
+  "rows": 31,
+  "range": [
+   "1996",
+   "2026"
+  ],
+  "is_exact_span_of_all_fact_years": true,
+  "earnings_series_rule_ok": true,
+  "in_country_year_rule_ok": true
+ },
+ "sanity": {
+  "2025 ranges (min, max) per measure, EU27 only": {
+   "house_price_index_2015": [
+    99.0,
+    366.6,
+    "FI",
+    "HU"
+   ],
+   "net_earnings_eur": [
+    13877.4,
+    55876.6,
+    "RO",
+    "LU"
+   ],
+   "net_earnings_pps": [
+    12374.1,
+    42062.8,
+    "BG",
+    "LU"
+   ],
+   "price_to_income_vs_lt_avg": [
+    47.0,
+    137.0,
+    "RO",
+    "PT"
+   ],
+   "overburden_total": [
+    2.4,
+    26.4,
+    "CY",
+    "EL"
+   ],
+   "overburden_18_24": [
+    1.7,
+    28.9,
+    "CY",
+    "EL"
+   ],
+   "overburden_25_29": [
+    1.1,
+    24.1,
+    "HR",
+    "DK"
+   ],
+   "age_leaving_home": [
+    21.3,
+    31.5,
+    "FI",
+    "HR"
+   ],
+   "pct_18_34_with_parents": [
+    16.6,
+    75.3,
+    "FI",
+    "HR"
+   ],
+   "hicp_rent_index": [
+    109.7,
+    205.4,
+    "FR",
+    "HU"
+   ],
+   "hicp_all_index": [
+    118.1,
+    174.0,
+    "CY",
+    "HU"
+   ],
+   "real_house_price_index_2015": [
+    81.2,
+    211.4,
+    "FI",
+    "PT"
+   ]
+  },
+  "PT price_to_income 2025 and EU rank": [
+   [
+    "PT",
+    136.97,
+    1
+   ],
+   [
+    "CZ",
+    118.08,
+    2
+   ],
+   [
+    "AT",
+    115.6,
+    3
+   ],
+   [
+    "LU",
+    113.11,
+    4
+   ],
+   [
+    "NL",
+    112.01,
+    5
+   ]
+  ],
+  "rent share 2025, EU27 *_CAP, top 5 (unrounded)": [
+   [
+    "PT_CAP",
+    "Lisboa",
+    78.33,
+    1400.0,
+    1787.42
+   ],
+   [
+    "HR_CAP",
+    "Zagreb",
+    74.59,
+    1050.0,
+    1407.66
+   ],
+   [
+    "CZ_CAP",
+    "Praha",
+    71.77,
+    1250.0,
+    1741.74
+   ],
+   [
+    "HU_CAP",
+    "Budapest",
+    70.76,
+    910.0,
+    1286.0
+   ],
+   [
+    "SE_CAP",
+    "Stockholm",
+    64.7,
+    2100.0,
+    3245.8
+   ]
+  ],
+  "Lisboa share if 2025 salary were 2023 salary grown at 2015-23 CAGR (break sensitivity)": [
+   [
+    11535.88,
+    15301.09,
+    20098.79,
+    21449.05,
+    16421.0,
+    78.3,
+    102.3
+   ]
+  ],
+  "year-on-year jumps > 25% in final measures (EU27, excl. 2023->2024 earnings)": [
+   [
+    "MT",
+    "overburden_18_24",
+    2007,
+    2008,
+    0.2,
+    1.2,
+    500.0
+   ],
+   [
+    "MT",
+    "overburden_18_24",
+    2005,
+    2006,
+    0.3,
+    1.7,
+    466.7
+   ],
+   [
+    "MT",
+    "overburden_18_24",
+    2022,
+    2023,
+    1.7,
+    6.7,
+    294.1
+   ],
+   [
+    "SK",
+    "overburden_18_24",
+    2008,
+    2009,
+    1.8,
+    7.0,
+    288.9
+   ],
+   [
+    "LT",
+    "overburden_25_29",
+    2009,
+    2010,
+    4.7,
+    18.2,
+    287.2
+   ],
+   [
+    "SK",
+    "overburden_25_29",
+    2020,
+    2021,
+    2.2,
+    8.3,
+    277.3
+   ],
+   [
+    "MT",
+    "overburden_18_24",
+    2015,
+    2016,
+    0.3,
+    1.0,
+    233.3
+   ],
+   [
+    "HU",
+    "overburden_total",
+    2021,
+    2022,
+    2.7,
+    8.1,
+    200.0
+   ],
+   [
+    "MT",
+    "overburden_25_29",
+    2024,
+    2025,
+    4.0,
+    11.7,
+    192.5
+   ],
+   [
+    "MT",
+    "overburden_18_24",
+    2009,
+    2010,
+    0.9,
+    2.6,
+    188.9
+   ],
+   [
+    "MT",
+    "overburden_18_24",
+    2018,
+    2019,
+    0.7,
+    2.0,
+    185.7
+   ],
+   [
+    "LV",
+    "overburden_25_29",
+    2022,
+    2023,
+    3.6,
+    9.9,
+    175.0
+   ],
+   [
+    "CY",
+    "overburden_18_24",
+    2007,
+    2008,
+    0.8,
+    2.2,
+    175.0
+   ],
+   [
+    "CY",
+    "overburden_18_24",
+    2020,
+    2021,
+    1.0,
+    2.7,
+    170.0
+   ],
+   [
+    "IE",
+    "overburden_25_29",
+    2013,
+    2014,
+    4.8,
+    12.4,
+    158.3
+   ],
+   [
+    "MT",
+    "overburden_18_24",
+    2020,
+    2021,
+    0.7,
+    1.8,
+    157.1
+   ],
+   [
+    "LU",
+    "overburden_25_29",
+    2017,
+    2018,
+    3.5,
+    9.0,
+    157.1
+   ],
+   [
+    "LT",
+    "overburden_18_24",
+    2022,
+    2023,
+    2.6,
+    6.3,
+    142.3
+   ],
+   [
+    "HU",
+    "overburden_18_24",
+    2021,
+    2022,
+    2.7,
+    6.5,
+    140.7
+   ],
+   [
+    "MT",
+    "overburden_25_29",
+    2022,
+    2023,
+    2.6,
+    6.2,
+    138.5
+   ],
+   [
+    "SK",
+    "overburden_total",
+    2022,
+    2023,
+    2.5,
+    5.9,
+    136.0
+   ],
+   [
+    "EE",
+    "overburden_25_29",
+    2022,
+    2023,
+    5.0,
+    11.5,
+    130.0
+   ],
+   [
+    "LU",
+    "overburden_25_29",
+    2021,
+    2022,
+    8.5,
+    19.4,
+    128.2
+   ],
+   [
+    "SK",
+    "overburden_total",
+    2020,
+    2021,
+    3.2,
+    7.1,
+    121.9
+   ],
+   [
+    "EE",
+    "overburden_25_29",
+    2006,
+    2007,
+    2.9,
+    6.1,
+    110.3
+   ]
+  ],
+  "series gaps: country-years where value missing between first and last year": [
+   [
+    "net_earnings_eur",
+    "CY",
+    [
+     2008,
+     2009,
+     2010,
+     2011,
+     2012,
+     2013,
+     2015,
+     2016
+    ]
+   ],
+   [
+    "overburden_total",
+    "FR",
+    [
+     2021
+    ]
+   ]
+  ],
+  "overburden_18_24 below 0 or above 100 / age outside 15-40": [
+   0,
+   0
+  ],
+  "rent share > 100% (any city, any year)": [
+   [
+    "LV_CAP",
+    2013,
+    139.2
+   ],
+   [
+    "LV_CAP",
+    2014,
+    132.2
+   ],
+   [
+    "RO_CAP",
+    2013,
+    127.2
+   ],
+   [
+    "RO_CAP",
+    2014,
+    117.1
+   ],
+   [
+    "LV_CAP",
+    2015,
+    110.9
+   ],
+   [
+    "RO_CAP",
+    2015,
+    110.2
+   ],
+   [
+    "PT_CAP",
+    2023,
+    105.9
+   ],
+   [
+    "BG_CAP",
+    2016,
+    102.4
+   ],
+   [
+    "HU_CAP",
+    2019,
+    102.2
+   ],
+   [
+    "PT_CAP",
+    2020,
+    102.1
+   ],
+   [
+    "PT_CAP",
+    2018,
+    101.6
+   ],
+   [
+    "RO_CAP",
+    2017,
+    101.2
+   ],
+   [
+    "RO_CAP",
+    2016,
+    100.0
+   ]
+  ],
+  "real_hpi 2015 should be ~100 (HPI and HICP both 2015=100)": [
+   100.0,
+   100.01
+  ],
+  "hicp_all 2015 annual average should be ~100": [
+   99.99,
+   100.0
+  ],
+  "hpi 2015 should be exactly ~100": [
+   100.0,
+   100.0
+  ],
+  "PTIR_LT_AVG long-run mean per country (should be ~100 by definition)": [
+   100.0,
+   100.0
+  ]
+ }
+}

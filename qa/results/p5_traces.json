@@ -1,0 +1,105 @@
+{
+ "seed": 20261104,
+ "traces": [
+  {
+   "#": 1,
+   "measure": "house_price_index_2015",
+   "geo": "FI",
+   "year": "2018",
+   "1 raw": "eurostat-house-price-index/prc_hpi_a.csv line 4202: OBS_VALUE='103.34' OBS_FLAG=''",
+   "2 long": "long_hpi_a.csv line 4202: value=103.34 flag=-",
+   "3 final": "country_year.csv line 246: house_price_index_2015=103.34 flag=-",
+   "result": "MATCH"
+  },
+  {
+   "#": 2,
+   "measure": "net_earnings_eur",
+   "geo": "LT",
+   "year": "2005",
+   "1 raw": "eurostat-net-earnings/earn_nt_net.csv line 29406: OBS_VALUE='3137.2' OBS_FLAG=''",
+   "2 long": "long_net_earn.csv line 29406: value=3137.2 flag=-",
+   "3 final": "country_year.csv line 359: net_earnings_eur=3137.2 flag=-",
+   "result": "MATCH"
+  },
+  {
+   "#": 3,
+   "measure": "net_earnings_pps",
+   "geo": "LV",
+   "year": "2012",
+   "1 raw": "eurostat-net-earnings/earn_nt_net.csv line 160919: OBS_VALUE='7395.32' OBS_FLAG=''",
+   "2 long": "long_net_earn.csv line 160919: value=7395.32 flag=-",
+   "3 final": "country_year.csv line 408: net_earnings_pps=7395.32 flag=-",
+   "result": "MATCH"
+  },
+  {
+   "#": 4,
+   "measure": "price_to_income_vs_lt_avg",
+   "geo": "RO",
+   "year": "2011",
+   "1 raw": "eurostat-house-price-to-income/tipsho60.csv line 1371: OBS_VALUE='100.59' OBS_FLAG=''",
+   "2 long": "long_ptir.csv line 1371: value=100.59 flag=-",
+   "3 final": "country_year.csv line 512: price_to_income_vs_lt_avg=100.59 flag=-",
+   "result": "MATCH"
+  },
+  {
+   "#": 5,
+   "measure": "overburden_18_24",
+   "geo": "AT",
+   "year": "2025",
+   "1 raw": "eurostat-housing-cost-overburden/ilc_lvho07a.csv line 106272: OBS_VALUE='4.5' OBS_FLAG=''",
+   "2 long": "long_overburden.csv line 106272: value=4.5 flag=-",
+   "3 final": "country_year.csv line 22: overburden_18_24=4.5 flag=-",
+   "result": "MATCH"
+  },
+  {
+   "#": 6,
+   "measure": "age_leaving_home",
+   "geo": "FI",
+   "year": "2012",
+   "1 raw": "eurostat-age-leaving-home/yth_demo_030.csv line 1858: OBS_VALUE='21.9' OBS_FLAG=''",
+   "2 long": "long_age_leave.csv line 1858: value=21.9 flag=-",
+   "3 final": "country_year.csv line 240: age_leaving_home=21.9 flag=-",
+   "result": "MATCH"
+  },
+  {
+   "#": 7,
+   "measure": "pct_18_34_with_parents",
+   "geo": "LV",
+   "year": "2012",
+   "1 raw": "eurostat-young-adults-living-with-parents/ilc_lvps08.csv line 11896: OBS_VALUE='54.2' OBS_FLAG=''",
+   "2 long": "long_with_parents.csv line 11896: value=54.2 flag=-",
+   "3 final": "country_year.csv line 408: pct_18_34_with_parents=54.2 flag=-",
+   "result": "MATCH"
+  },
+  {
+   "#": 8,
+   "measure": "hicp_rent_index",
+   "geo": "AT",
+   "year": "2011",
+   "1 raw": "prc_hicp_minr.csv lines 27684-27695: 12 months = [83.97, 84.17, 84.36, 84.56, 84.95, 85.34, 85.73, 86.31, 86.7, 86.9, 87.1, 87.1]",
+   "2 long": "long_hicp.csv: 12 monthly rows, same values: True",
+   "3 final": "country_year.csv line 8: hicp_rent_index=85.59916666666668 ; hand mean (statistics.fmean)=85.59916666666668",
+   "result": "MATCH"
+  },
+  {
+   "#": 9,
+   "measure": "real_house_price_index_2015",
+   "geo": "CY",
+   "year": "2022",
+   "1 raw": "prc_hpi_a.csv line 3939: HPI=123.22 ; prc_hicp_minr.csv TOTAL I15 12 months, mean=110.17416666666666",
+   "2 long": "(derived only in country_year)",
+   "3 final": "country_year.csv line 82: real_house_price_index_2015=111.84110007639418 ; hand calc=111.84110007639418",
+   "result": "MATCH"
+  },
+  {
+   "#": 10,
+   "measure": "rent_share_of_net_salary_pct",
+   "geo": "IE_CAP",
+   "year": "2014",
+   "1 raw": "prc_colc_rents.csv line 268: rent=1150 ; earn_nt_net.csv line 29315: net annual=31687.39 flag=''",
+   "2 long": "net/12=2640.6158333333333 ; share unrounded=43.5504470390272",
+   "3 final": "city_rent.csv line 268: rent=1150 net_salary_month=2640.6158333333333 share=43.6",
+   "result": "MATCH"
+  }
+ ]
+}

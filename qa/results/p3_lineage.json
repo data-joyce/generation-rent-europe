@@ -1,0 +1,609 @@
+{
+ "lineage": [
+  {
+   "step": "read+clean hpi_a -> long_hpi_a",
+   "rows_before": 6114,
+   "rows_after": 6114,
+   "change": 0,
+   "explanation": "clean_eurostat() only renames/splits columns; no row filter"
+  },
+  {
+   "step": "read+clean hpi_q -> long_hpi_q",
+   "rows_before": 33617,
+   "rows_after": 33617,
+   "change": 0,
+   "explanation": "clean_eurostat() only renames/splits columns; no row filter"
+  },
+  {
+   "step": "read+clean ptir -> long_ptir",
+   "rows_before": 2161,
+   "rows_after": 2161,
+   "change": 0,
+   "explanation": "clean_eurostat() only renames/splits columns; no row filter"
+  },
+  {
+   "step": "read+clean net_earn -> long_net_earn",
+   "rows_before": 199986,
+   "rows_after": 199986,
+   "change": 0,
+   "explanation": "clean_eurostat() only renames/splits columns; no row filter"
+  },
+  {
+   "step": "read+clean city_rents -> long_city_rents",
+   "rows_before": 5416,
+   "rows_after": 5416,
+   "change": 0,
+   "explanation": "clean_eurostat() only renames/splits columns; no row filter"
+  },
+  {
+   "step": "read+clean overburden -> long_overburden",
+   "rows_before": 127035,
+   "rows_after": 127035,
+   "change": 0,
+   "explanation": "clean_eurostat() only renames/splits columns; no row filter"
+  },
+  {
+   "step": "read+clean age_leave -> long_age_leave",
+   "rows_before": 2331,
+   "rows_after": 2331,
+   "change": 0,
+   "explanation": "clean_eurostat() only renames/splits columns; no row filter"
+  },
+  {
+   "step": "read+clean with_parents -> long_with_parents",
+   "rows_before": 22086,
+   "rows_after": 22086,
+   "change": 0,
+   "explanation": "clean_eurostat() only renames/splits columns; no row filter"
+  },
+  {
+   "step": "read+clean hicp -> long_hicp",
+   "rows_before": 266075,
+   "rows_after": 266075,
+   "change": 0,
+   "explanation": "clean_eurostat() only renames/splits columns; no row filter"
+  },
+  {
+   "step": "pick house_price_index_2015: purchase==TOTAL",
+   "rows_before": 6114,
+   "rows_after": 2257,
+   "change": -3857,
+   "explanation": "keep one purchase of 3"
+  },
+  {
+   "step": "pick house_price_index_2015: unit==I15_A_AVG",
+   "rows_before": 2257,
+   "rows_after": 759,
+   "change": -1498,
+   "explanation": "keep one unit of 3"
+  },
+  {
+   "step": "pick net_earnings_eur: estruct==NET",
+   "rows_before": 199986,
+   "rows_after": 33331,
+   "change": -166655,
+   "explanation": "keep one estruct of 6"
+  },
+  {
+   "step": "pick net_earnings_eur: ecase==P1_NCH_AW100",
+   "rows_before": 33331,
+   "rows_after": 2603,
+   "change": -30728,
+   "explanation": "keep one ecase of 13"
+  },
+  {
+   "step": "pick net_earnings_eur: currency==EUR",
+   "rows_before": 2603,
+   "rows_after": 892,
+   "change": -1711,
+   "explanation": "keep one currency of 3"
+  },
+  {
+   "step": "pick net_earnings_pps: estruct==NET",
+   "rows_before": 199986,
+   "rows_after": 33331,
+   "change": -166655,
+   "explanation": "keep one estruct of 6"
+  },
+  {
+   "step": "pick net_earnings_pps: ecase==P1_NCH_AW100",
+   "rows_before": 33331,
+   "rows_after": 2603,
+   "change": -30728,
+   "explanation": "keep one ecase of 13"
+  },
+  {
+   "step": "pick net_earnings_pps: currency==PPS",
+   "rows_before": 2603,
+   "rows_after": 892,
+   "change": -1711,
+   "explanation": "keep one currency of 3"
+  },
+  {
+   "step": "pick price_to_income_vs_lt_avg: unit==PTIR_LT_AVG",
+   "rows_before": 2161,
+   "rows_after": 730,
+   "change": -1431,
+   "explanation": "keep one unit of 3"
+  },
+  {
+   "step": "pick overburden_total: sex==T",
+   "rows_before": 127035,
+   "rows_after": 42345,
+   "change": -84690,
+   "explanation": "keep one sex of 3"
+  },
+  {
+   "step": "pick overburden_total: rskpovth==TOTAL",
+   "rows_before": 42345,
+   "rows_after": 14115,
+   "change": -28230,
+   "explanation": "keep one rskpovth of 3"
+  },
+  {
+   "step": "pick overburden_total: age==TOTAL",
+   "rows_before": 14115,
+   "rows_after": 833,
+   "change": -13282,
+   "explanation": "keep one age of 17"
+  },
+  {
+   "step": "pick overburden_18_24: sex==T",
+   "rows_before": 127035,
+   "rows_after": 42345,
+   "change": -84690,
+   "explanation": "keep one sex of 3"
+  },
+  {
+   "step": "pick overburden_18_24: rskpovth==TOTAL",
+   "rows_before": 42345,
+   "rows_after": 14115,
+   "change": -28230,
+   "explanation": "keep one rskpovth of 3"
+  },
+  {
+   "step": "pick overburden_18_24: age==Y18-24",
+   "rows_before": 14115,
+   "rows_after": 833,
+   "change": -13282,
+   "explanation": "keep one age of 17"
+  },
+  {
+   "step": "pick overburden_25_29: sex==T",
+   "rows_before": 127035,
+   "rows_after": 42345,
+   "change": -84690,
+   "explanation": "keep one sex of 3"
+  },
+  {
+   "step": "pick overburden_25_29: rskpovth==TOTAL",
+   "rows_before": 42345,
+   "rows_after": 14115,
+   "change": -28230,
+   "explanation": "keep one rskpovth of 3"
+  },
+  {
+   "step": "pick overburden_25_29: age==Y25-29",
+   "rows_before": 14115,
+   "rows_after": 833,
+   "change": -13282,
+   "explanation": "keep one age of 17"
+  },
+  {
+   "step": "pick age_leaving_home: sex==T",
+   "rows_before": 2331,
+   "rows_after": 777,
+   "change": -1554,
+   "explanation": "keep one sex of 3"
+  },
+  {
+   "step": "pick pct_18_34_with_parents: sex==T",
+   "rows_before": 22086,
+   "rows_after": 7362,
+   "change": -14724,
+   "explanation": "keep one sex of 3"
+  },
+  {
+   "step": "pick pct_18_34_with_parents: age==Y18-34",
+   "rows_before": 7362,
+   "rows_after": 826,
+   "change": -6536,
+   "explanation": "keep one age of 9"
+  },
+  {
+   "step": "hicp: unit==I15 & coicop18 in (CP041, TOTAL)",
+   "rows_before": 266075,
+   "rows_after": 28260,
+   "change": -237815,
+   "explanation": "keep 2 of 10 categories, index unit only"
+  },
+  {
+   "step": "hicp: groupby geo-year-coicop (mean of months)",
+   "rows_before": 28260,
+   "rows_after": 2411,
+   "change": -25849,
+   "explanation": "monthly rows -> 1 row per geo-year-category"
+  },
+  {
+   "step": "hicp: keep years with 12 monthly values",
+   "rows_before": 2411,
+   "rows_after": 2285,
+   "change": -126,
+   "explanation": "drops partial years (first year of each series, 2026)"
+  },
+  {
+   "step": "hicp: pivot categories to columns",
+   "rows_before": 2285,
+   "rows_after": 1191,
+   "change": -1094,
+   "explanation": "2 categories -> 2 columns"
+  },
+  {
+   "step": "outer merge + net_earnings_eur",
+   "rows_before": 759,
+   "rows_after": 1007,
+   "change": 248,
+   "explanation": "one_to_one validated; 248 new geo-years added, 0 rows lost (outer)"
+  },
+  {
+   "step": "outer merge + net_earnings_pps",
+   "rows_before": 1007,
+   "rows_after": 1007,
+   "change": 0,
+   "explanation": "one_to_one validated; 0 new geo-years added, 0 rows lost (outer)"
+  },
+  {
+   "step": "outer merge + price_to_income_vs_lt_avg",
+   "rows_before": 1007,
+   "rows_after": 1030,
+   "change": 23,
+   "explanation": "one_to_one validated; 23 new geo-years added, 0 rows lost (outer)"
+  },
+  {
+   "step": "outer merge + overburden_total",
+   "rows_before": 1030,
+   "rows_after": 1112,
+   "change": 82,
+   "explanation": "one_to_one validated; 82 new geo-years added, 0 rows lost (outer)"
+  },
+  {
+   "step": "outer merge + overburden_18_24",
+   "rows_before": 1112,
+   "rows_after": 1112,
+   "change": 0,
+   "explanation": "one_to_one validated; 0 new geo-years added, 0 rows lost (outer)"
+  },
+  {
+   "step": "outer merge + overburden_25_29",
+   "rows_before": 1112,
+   "rows_after": 1112,
+   "change": 0,
+   "explanation": "one_to_one validated; 0 new geo-years added, 0 rows lost (outer)"
+  },
+  {
+   "step": "outer merge + age_leaving_home",
+   "rows_before": 1112,
+   "rows_after": 1131,
+   "change": 19,
+   "explanation": "one_to_one validated; 19 new geo-years added, 0 rows lost (outer)"
+  },
+  {
+   "step": "outer merge + pct_18_34_with_parents",
+   "rows_before": 1131,
+   "rows_after": 1131,
+   "change": 0,
+   "explanation": "one_to_one validated; 0 new geo-years added, 0 rows lost (outer)"
+  },
+  {
+   "step": "outer merge + hicp_wide",
+   "rows_before": 1131,
+   "rows_after": 1313,
+   "change": 182,
+   "explanation": "one_to_one validated; 182 new geo-years added, 0 rows lost (outer)"
+  },
+  {
+   "step": "left merge + dim_country",
+   "rows_before": 1313,
+   "rows_after": 1313,
+   "change": 0,
+   "explanation": "many_to_one validated; unmatched geos: 0"
+  },
+  {
+   "step": "filter: EU27 countries + EU27_2020",
+   "rows_before": 1313,
+   "rows_after": 832,
+   "change": -481,
+   "explanation": "drops 24 non-EU / aggregate geos: ['AL', 'BA', 'CH', 'EA', 'EA18', 'EA19', 'EA20', 'EA21', 'EEA', 'EU', 'EU15', 'EU27_2007', 'EU28', 'GE', 'IS', 'JP', 'ME', 'MK', 'NO', 'RS', 'TR', 'UK', 'US', 'XK']"
+  },
+  {
+   "step": "filter: year 2005-2025 (string between)",
+   "rows_before": 832,
+   "rows_after": 588,
+   "change": -244,
+   "explanation": "drops years ['1996', '1997', '1998']...['2003', '2004']"
+  },
+  {
+   "step": "final country_year",
+   "rows_before": 588,
+   "rows_after": 588,
+   "change": 0,
+   "explanation": "derived column + column reorder; no row change"
+  },
+  {
+   "step": "city_rents: currency==EUR",
+   "rows_before": 5416,
+   "rows_after": 2708,
+   "change": -2708,
+   "explanation": "drop NAC (national currency) duplicates"
+  },
+  {
+   "step": "city_rents: building==FLAT1",
+   "rows_before": 2708,
+   "rows_after": 552,
+   "change": -2156,
+   "explanation": "keep 1-bedroom flats only"
+  },
+  {
+   "step": "city_rents: left merge net earnings (EUR) on country_geo+year",
+   "rows_before": 552,
+   "rows_after": 552,
+   "change": 0,
+   "explanation": "many_to_one validated; 90 city-years without a national earnings value (kept, share = NaN)"
+  },
+  {
+   "step": "hicp_monthly: geo in EU27 + EU27_2020",
+   "rows_before": 266075,
+   "rows_after": 196331,
+   "change": -69744,
+   "explanation": "all units and categories kept"
+  },
+  {
+   "step": "hicp_monthly: pivot unit (I15, RCH_A) to 2 columns",
+   "rows_before": 196331,
+   "rows_after": 99856,
+   "change": -96475,
+   "explanation": "1 row per geo-category-month; filled value cells 196,331 == long rows 196,331: True"
+  },
+  {
+   "step": "dim_year: one row per year",
+   "rows_before": 0,
+   "rows_after": 31,
+   "change": 31,
+   "explanation": "years 1996-2026 (span of all facts)"
+  }
+ ],
+ "merge_checks": [
+  {
+   "merge": "outer + net_earnings_eur",
+   "validate": "one_to_one OK",
+   "left_rows": 759,
+   "right_rows": 892,
+   "result_rows": 1007,
+   "both": 644,
+   "left_only": 115,
+   "right_only": 248,
+   "expected_rows(left+right-both)": 1007
+  },
+  {
+   "merge": "outer + net_earnings_pps",
+   "validate": "one_to_one OK",
+   "left_rows": 1007,
+   "right_rows": 892,
+   "result_rows": 1007,
+   "both": 892,
+   "left_only": 115,
+   "right_only": 0,
+   "expected_rows(left+right-both)": 1007
+  },
+  {
+   "merge": "outer + price_to_income_vs_lt_avg",
+   "validate": "one_to_one OK",
+   "left_rows": 1007,
+   "right_rows": 730,
+   "result_rows": 1030,
+   "both": 707,
+   "left_only": 300,
+   "right_only": 23,
+   "expected_rows(left+right-both)": 1030
+  },
+  {
+   "merge": "outer + overburden_total",
+   "validate": "one_to_one OK",
+   "left_rows": 1030,
+   "right_rows": 833,
+   "result_rows": 1112,
+   "both": 751,
+   "left_only": 279,
+   "right_only": 82,
+   "expected_rows(left+right-both)": 1112
+  },
+  {
+   "merge": "outer + overburden_18_24",
+   "validate": "one_to_one OK",
+   "left_rows": 1112,
+   "right_rows": 833,
+   "result_rows": 1112,
+   "both": 833,
+   "left_only": 279,
+   "right_only": 0,
+   "expected_rows(left+right-both)": 1112
+  },
+  {
+   "merge": "outer + overburden_25_29",
+   "validate": "one_to_one OK",
+   "left_rows": 1112,
+   "right_rows": 833,
+   "result_rows": 1112,
+   "both": 833,
+   "left_only": 279,
+   "right_only": 0,
+   "expected_rows(left+right-both)": 1112
+  },
+  {
+   "merge": "outer + age_leaving_home",
+   "validate": "one_to_one OK",
+   "left_rows": 1112,
+   "right_rows": 777,
+   "result_rows": 1131,
+   "both": 758,
+   "left_only": 354,
+   "right_only": 19,
+   "expected_rows(left+right-both)": 1131
+  },
+  {
+   "merge": "outer + pct_18_34_with_parents",
+   "validate": "one_to_one OK",
+   "left_rows": 1131,
+   "right_rows": 826,
+   "result_rows": 1131,
+   "both": 826,
+   "left_only": 305,
+   "right_only": 0,
+   "expected_rows(left+right-both)": 1131
+  },
+  {
+   "merge": "outer + hicp_wide",
+   "validate": "one_to_one OK",
+   "left_rows": 1131,
+   "right_rows": 1191,
+   "result_rows": 1313,
+   "both": 1009,
+   "left_only": 122,
+   "right_only": 182,
+   "expected_rows(left+right-both)": 1313
+  },
+  {
+   "merge": "left + dim_country",
+   "validate": "many_to_one OK",
+   "left_rows": 1313,
+   "right_rows": 52,
+   "result_rows": 1313,
+   "both": 1313,
+   "left_only (no country match)": 0
+  },
+  {
+   "merge": "city_rent left + net_earnings_eur",
+   "validate": "many_to_one OK",
+   "left_rows": 552,
+   "right_rows": 892,
+   "result_rows": 552,
+   "left_only (no earnings)": 90,
+   "unmatched_by_country": {
+    "AL": 13,
+    "BA": 12,
+    "CH": 4,
+    "CY": 3,
+    "IS": 2,
+    "ME": 13,
+    "MK": 13,
+    "NO": 2,
+    "RS": 13,
+    "TR": 2,
+    "UK": 8,
+    "XK": 5
+   }
+  }
+ ],
+ "pitfalls": {
+  "pandas_version": "3.1.0",
+  "copy_on_write_default": "pandas >= 3.0: Copy-on-Write is always on, so chained assignment cannot silently modify a parent frame",
+  "warnings_captured": [
+   "UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown"
+  ],
+  "groupby_nan_keys_in_hicp": 0,
+  "hicp_months_with_NaN_value_inside_groups": 0,
+  "hicp_partial_years_dropped_by_year": {
+   "1996": 5,
+   "1997": 3,
+   "1998": 1,
+   "1999": 8,
+   "2000": 2,
+   "2001": 1,
+   "2004": 4,
+   "2005": 2,
+   "2014": 2,
+   "2015": 5,
+   "2019": 2,
+   "2020": 1,
+   "2024": 2,
+   "2026": 88
+  },
+  "year_string_between_equals_int_between": true,
+  "value_parse_coercions": {
+   "hpi_a": 0,
+   "hpi_q": 0,
+   "ptir": 0,
+   "net_earn": 0,
+   "city_rents": 0,
+   "overburden": 0,
+   "age_leave": 0,
+   "with_parents": 0,
+   "hicp": 0
+  },
+  "dtypes_country_year": {
+   "geo": "str",
+   "country": "str",
+   "iso2": "str",
+   "year": "int64",
+   "house_price_index_2015": "float64",
+   "house_price_index_2015_flag": "str",
+   "net_earnings_eur": "float64",
+   "net_earnings_eur_flag": "str",
+   "net_earnings_pps": "float64",
+   "net_earnings_pps_flag": "str",
+   "price_to_income_vs_lt_avg": "float64",
+   "price_to_income_vs_lt_avg_flag": "str",
+   "overburden_total": "float64",
+   "overburden_total_flag": "str",
+   "overburden_18_24": "float64",
+   "overburden_18_24_flag": "str",
+   "overburden_25_29": "float64",
+   "overburden_25_29_flag": "str",
+   "age_leaving_home": "float64",
+   "age_leaving_home_flag": "str",
+   "pct_18_34_with_parents": "float64",
+   "pct_18_34_with_parents_flag": "str",
+   "hicp_rent_index": "float64",
+   "hicp_all_index": "float64",
+   "real_house_price_index_2015": "float64"
+  },
+  "dtypes_city_rent": {
+   "city_geo": "str",
+   "city": "str",
+   "country_geo": "object",
+   "is_capital": "bool",
+   "year": "int64",
+   "rent_1bed_eur_month": "int64",
+   "net_salary_eur_month": "float64",
+   "rent_share_of_net_salary_pct": "float64",
+   "net_earnings_eur_flag": "str"
+  },
+  "geo_codes_with_conflicting_labels": [],
+  "dim_country_is_aggregate_true": [
+   "EA",
+   "EA18",
+   "EA19",
+   "EA20",
+   "EA21",
+   "EEA",
+   "EU",
+   "EU15",
+   "EU27_2007",
+   "EU27_2020",
+   "EU28"
+  ],
+  "dim_country_aggregates_missed_by_regex": "none",
+  "dim_country_iso2_not_2_letters (non-empty)": "none",
+  "dim_country_aggregates_with_iso2": "none",
+  "notebook_check_inputs_non_null": {
+   "overburden_total": 569,
+   "overburden_18_24": 569,
+   "overburden_25_29": 569,
+   "pct_18_34_with_parents": 576,
+   "age_leaving_home": 578
+  },
+  "rent_share_rounding": "rent_share_of_net_salary_pct rounded to 1 decimal in the CSV (precalculated)",
+  "real_hpi_max_abs_diff_vs_formula": 0.0,
+  "year_dtype": "int64"
+ }
+}

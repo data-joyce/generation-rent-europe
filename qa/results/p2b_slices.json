@@ -1,0 +1,572 @@
+{
+ "house_price_index_2015": {
+  "filter": {
+   "purchase": "TOTAL",
+   "unit": "I15_A_AVG"
+  },
+  "rows_all_geos": 759,
+  "rows_eu27_plus_avg": 567,
+  "duplicate_geo_period": 0,
+  "year_range": "2005-2025",
+  "eu27_missing_entirely": [
+   "EL"
+  ],
+  "eu27_avg_present": true,
+  "blank_values": 38,
+  "flags": {
+   "-": 556,
+   "e": 5,
+   "b": 3,
+   "p": 3
+  },
+  "first_year_by_geo_min_max": [
+   "2005",
+   "2010"
+  ],
+  "last_year_by_geo": {
+   "2025": 27
+  }
+ },
+ "net_earnings_eur": {
+  "filter": {
+   "estruct": "NET",
+   "ecase": "P1_NCH_AW100",
+   "currency": "EUR"
+  },
+  "rows_all_geos": 892,
+  "rows_eu27_plus_avg": 668,
+  "duplicate_geo_period": 0,
+  "year_range": "2000-2025",
+  "eu27_missing_entirely": [],
+  "eu27_avg_present": true,
+  "blank_values": 0,
+  "flags": {
+   "-": 640,
+   "b": 28
+  },
+  "first_year_by_geo_min_max": [
+   "2000",
+   "2013"
+  ],
+  "last_year_by_geo": {
+   "2025": 28
+  }
+ },
+ "net_earnings_pps": {
+  "filter": {
+   "estruct": "NET",
+   "ecase": "P1_NCH_AW100",
+   "currency": "PPS"
+  },
+  "rows_all_geos": 892,
+  "rows_eu27_plus_avg": 668,
+  "duplicate_geo_period": 0,
+  "year_range": "2000-2025",
+  "eu27_missing_entirely": [],
+  "eu27_avg_present": true,
+  "blank_values": 0,
+  "flags": {
+   "-": 640,
+   "b": 28
+  },
+  "first_year_by_geo_min_max": [
+   "2000",
+   "2013"
+  ],
+  "last_year_by_geo": {
+   "2025": 28
+  }
+ },
+ "price_to_income_vs_lt_avg": {
+  "filter": {
+   "unit": "PTIR_LT_AVG"
+  },
+  "rows_all_geos": 730,
+  "rows_eu27_plus_avg": 709,
+  "duplicate_geo_period": 0,
+  "year_range": "2000-2025",
+  "eu27_missing_entirely": [],
+  "eu27_avg_present": true,
+  "blank_values": 0,
+  "flags": {
+   "e": 179,
+   "-": 521,
+   "b": 3,
+   "dp": 3,
+   "ep": 1,
+   "p": 2
+  },
+  "first_year_by_geo_min_max": [
+   "2000",
+   "2005"
+  ],
+  "last_year_by_geo": {
+   "2025": 28
+  }
+ },
+ "overburden_total": {
+  "filter": {
+   "sex": "T",
+   "rskpovth": "TOTAL",
+   "age": "TOTAL"
+  },
+  "rows_all_geos": 833,
+  "rows_eu27_plus_avg": 582,
+  "duplicate_geo_period": 0,
+  "year_range": "2003-2025",
+  "eu27_missing_entirely": [],
+  "eu27_avg_present": true,
+  "blank_values": 0,
+  "flags": {
+   "u": 4,
+   "-": 544,
+   "bu": 1,
+   "b": 26,
+   "e": 5,
+   "p": 2
+  },
+  "first_year_by_geo_min_max": [
+   "2003",
+   "2010"
+  ],
+  "last_year_by_geo": {
+   "2025": 28
+  }
+ },
+ "overburden_18_24": {
+  "filter": {
+   "sex": "T",
+   "rskpovth": "TOTAL",
+   "age": "Y18-24"
+  },
+  "rows_all_geos": 833,
+  "rows_eu27_plus_avg": 582,
+  "duplicate_geo_period": 0,
+  "year_range": "2003-2025",
+  "eu27_missing_entirely": [],
+  "eu27_avg_present": true,
+  "blank_values": 0,
+  "flags": {
+   "u": 4,
+   "-": 544,
+   "bu": 1,
+   "b": 26,
+   "e": 5,
+   "p": 2
+  },
+  "first_year_by_geo_min_max": [
+   "2003",
+   "2010"
+  ],
+  "last_year_by_geo": {
+   "2025": 28
+  }
+ },
+ "overburden_25_29": {
+  "filter": {
+   "sex": "T",
+   "rskpovth": "TOTAL",
+   "age": "Y25-29"
+  },
+  "rows_all_geos": 833,
+  "rows_eu27_plus_avg": 582,
+  "duplicate_geo_period": 0,
+  "year_range": "2003-2025",
+  "eu27_missing_entirely": [],
+  "eu27_avg_present": true,
+  "blank_values": 0,
+  "flags": {
+   "u": 4,
+   "-": 544,
+   "bu": 1,
+   "b": 26,
+   "e": 5,
+   "p": 2
+  },
+  "first_year_by_geo_min_max": [
+   "2003",
+   "2010"
+  ],
+  "last_year_by_geo": {
+   "2025": 28
+  }
+ },
+ "age_leaving_home": {
+  "filter": {
+   "sex": "T"
+  },
+  "rows_all_geos": 777,
+  "rows_eu27_plus_avg": 662,
+  "duplicate_geo_period": 0,
+  "year_range": "2000-2025",
+  "eu27_missing_entirely": [],
+  "eu27_avg_present": true,
+  "blank_values": 0,
+  "flags": {
+   "-": 607,
+   "b": 55
+  },
+  "first_year_by_geo_min_max": [
+   "2000",
+   "2010"
+  ],
+  "last_year_by_geo": {
+   "2025": 28
+  }
+ },
+ "pct_18_34_with_parents": {
+  "filter": {
+   "sex": "T",
+   "age": "Y18-34"
+  },
+  "rows_all_geos": 826,
+  "rows_eu27_plus_avg": 595,
+  "duplicate_geo_period": 0,
+  "year_range": "2003-2025",
+  "eu27_missing_entirely": [],
+  "eu27_avg_present": true,
+  "blank_values": 0,
+  "flags": {
+   "-": 568,
+   "b": 16,
+   "e": 9,
+   "p": 2
+  },
+  "first_year_by_geo_min_max": [
+   "2003",
+   "2010"
+  ],
+  "last_year_by_geo": {
+   "2025": 28
+  }
+ },
+ "hicp_rent_monthly(I15,CP041)": {
+  "filter": {
+   "unit": "I15",
+   "coicop18": "CP041"
+  },
+  "rows_all_geos": 13545,
+  "rows_eu27_plus_avg": 10005,
+  "duplicate_geo_period": 0,
+  "year_range": "1996-2026",
+  "eu27_missing_entirely": [],
+  "eu27_avg_present": true,
+  "blank_values": 0,
+  "flags": {
+   "-": 9705,
+   "e": 300
+  },
+  "first_year_by_geo_min_max": [
+   "1996",
+   "2000"
+  ],
+  "last_year_by_geo": {
+   "2026": 28
+  }
+ },
+ "hicp_all_monthly(I15,TOTAL)": {
+  "filter": {
+   "unit": "I15",
+   "coicop18": "TOTAL"
+  },
+  "rows_all_geos": 14715,
+  "rows_eu27_plus_avg": 10240,
+  "duplicate_geo_period": 0,
+  "year_range": "1996-2026",
+  "eu27_missing_entirely": [],
+  "eu27_avg_present": true,
+  "blank_values": 0,
+  "flags": {
+   "-": 9940,
+   "e": 300
+  },
+  "first_year_by_geo_min_max": [
+   "1996",
+   "1999"
+  ],
+  "last_year_by_geo": {
+   "2026": 28
+  }
+ },
+ "city_rent_1bed_eur": {
+  "filter": {
+   "building": "FLAT1",
+   "currency": "EUR"
+  },
+  "rows_all_geos": 552,
+  "rows_eu27_plus_avg": 0,
+  "duplicate_geo_period": 0,
+  "year_range": null,
+  "eu27_missing_entirely": [
+   "AT",
+   "BE",
+   "BG",
+   "CY",
+   "CZ",
+   "DE",
+   "DK",
+   "EE",
+   "EL",
+   "ES",
+   "FI",
+   "FR",
+   "HR",
+   "HU",
+   "IE",
+   "IT",
+   "LT",
+   "LU",
+   "LV",
+   "MT",
+   "NL",
+   "PL",
+   "PT",
+   "RO",
+   "SE",
+   "SI",
+   "SK"
+  ],
+  "eu27_avg_present": false,
+  "blank_values": 0,
+  "flags": {},
+  "first_year_by_geo_min_max": [
+   null,
+   null
+  ],
+  "last_year_by_geo": {}
+ },
+ "_anomalies": {
+  "net_P1_NCH_AW100_nonpositive": [],
+  "TR_EUR_net_2000_2006": [
+   "2000: 6874930772",
+   "2001: 4857838258",
+   "2002: 5126309581",
+   "2003: 5235964722",
+   "2004: 5463.04",
+   "2005: 6521.22",
+   "2006: 6022.52"
+  ],
+  "net_eur_EU27_yoy_over_20pct": [
+   "BG 2023->2024: +29.0% flag=b",
+   "HR 2023->2024: +20.6% flag=b",
+   "HU 2001->2002: +23.1% flag=-",
+   "LT 2006->2007: +25.7% flag=-",
+   "LT 2007->2008: +20.2% flag=-",
+   "LV 2005->2006: +24.8% flag=-",
+   "LV 2006->2007: +31.4% flag=-",
+   "LV 2007->2008: +22.9% flag=-",
+   "LV 2023->2024: +28.8% flag=b",
+   "MT 2023->2024: +20.5% flag=b",
+   "PT 2023->2024: +31.4% flag=b",
+   "RO 2023->2024: +21.4% flag=b",
+   "SI 2023->2024: +29.9% flag=b",
+   "SK 2023->2024: +30.5% flag=b"
+  ],
+  "net_eur_2024_flag_b_count": "27 of 27 EU27 countries with a 2024 value",
+  "net_eur_EU27_countries_with_gaps": {
+   "CY": [
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2015,
+    2016
+   ]
+  },
+  "overburden_used_slices_blank": [],
+  "overburden_used_slices_flag_u": {
+   "TOTAL": 5,
+   "Y18-24": 5,
+   "Y25-29": 5
+  },
+  "hpi_a_geos_present": [
+   "AT",
+   "BE",
+   "BG",
+   "CH",
+   "CY",
+   "CZ",
+   "DE",
+   "DK",
+   "EA",
+   "EA19",
+   "EA20",
+   "EA21",
+   "EE",
+   "ES",
+   "EU",
+   "EU27_2020",
+   "EU28",
+   "FI",
+   "FR",
+   "HR",
+   "HU",
+   "IE",
+   "IS",
+   "IT",
+   "LT",
+   "LU",
+   "LV",
+   "MT",
+   "NL",
+   "NO",
+   "PL",
+   "PT",
+   "RO",
+   "SE",
+   "SI",
+   "SK",
+   "TR",
+   "UK"
+  ],
+  "hpi_a_blank_TOTAL_I15_EU27": [
+   "AT 2005",
+   "AT 2006",
+   "AT 2007",
+   "AT 2008",
+   "AT 2009",
+   "CZ 2005",
+   "CZ 2006",
+   "CZ 2007",
+   "ES 2005",
+   "HR 2005",
+   "HR 2006",
+   "HR 2007",
+   "HU 2005",
+   "HU 2006",
+   "IT 2005",
+   "IT 2006",
+   "IT 2007",
+   "IT 2008",
+   "IT 2009",
+   "LT 2005",
+   "LU 2005",
+   "LU 2006",
+   "LV 2005",
+   "PL 2005",
+   "PL 2006",
+   "PL 2007",
+   "PL 2008",
+   "PL 2009",
+   "PT 2005",
+   "PT 2006",
+   "PT 2007",
+   "RO 2005",
+   "RO 2006",
+   "RO 2007",
+   "RO 2008",
+   "SI 2005",
+   "SI 2006",
+   "SK 2005"
+  ],
+  "hicp_rows_by_month_2026": {
+   "2026-01": 864,
+   "2026-02": 864,
+   "2026-03": 872,
+   "2026-04": 872,
+   "2026-05": 872,
+   "2026-06": 872,
+   "2026-07": 872,
+   "2026-08": 872,
+   "2026-09": 872,
+   "2026-10": 25
+  },
+  "hicp_2026_10_geos": [
+   "AT",
+   "BE",
+   "BG",
+   "CY",
+   "DE",
+   "EA",
+   "EA19",
+   "EA20",
+   "EA21",
+   "EE",
+   "EL",
+   "ES",
+   "FI",
+   "FR",
+   "HR",
+   "IE",
+   "IT",
+   "LT",
+   "LU",
+   "LV",
+   "MT",
+   "NL",
+   "PT",
+   "SI",
+   "SK"
+  ],
+  "hicp_series_with_missing_months": [
+   "('I15', 'CP0411', 'EEA'): 2 missing, e.g. 2026-01",
+   "('I15', 'CP0411', 'NO'): 2 missing, e.g. 2026-01",
+   "('I15', 'CP0451', 'EEA'): 2 missing, e.g. 2026-01",
+   "('I15', 'CP0451', 'NO'): 2 missing, e.g. 2026-01",
+   "('RCH_A', 'CP0411', 'EEA'): 2 missing, e.g. 2026-01",
+   "('RCH_A', 'CP0411', 'NO'): 2 missing, e.g. 2026-01",
+   "('RCH_A', 'CP0451', 'EEA'): 2 missing, e.g. 2026-01",
+   "('RCH_A', 'CP0451', 'NO'): 2 missing, e.g. 2026-01"
+  ],
+  "city_rent_geo_codes": [
+   "AL_CAP",
+   "AT_CAP",
+   "BA_CAP",
+   "BE_CAP",
+   "BG_CAP",
+   "CH_CAP",
+   "CH_DEL",
+   "CY_CAP",
+   "CZ_CAP",
+   "DE_CAP",
+   "DE_DEL1",
+   "DE_DEL2",
+   "DE_DEL3",
+   "DK_CAP",
+   "EE_CAP",
+   "EL_CAP",
+   "ES_CAP",
+   "FI_CAP",
+   "FR_CAP",
+   "HR_CAP",
+   "HU_CAP",
+   "IE_CAP",
+   "IS_CAP",
+   "IT_CAP",
+   "IT_DEL",
+   "LT_CAP",
+   "LU_CAP",
+   "LV_CAP",
+   "ME_CAP",
+   "MK_CAP",
+   "MT_CAP",
+   "NL_DEL",
+   "NO_CAP",
+   "PL_CAP",
+   "PT_CAP",
+   "RO_CAP",
+   "RS_CAP",
+   "SE_CAP",
+   "SI_CAP",
+   "SK_CAP",
+   "TR_CAP",
+   "UK_CAP",
+   "UK_DEL",
+   "XK_CAP"
+  ],
+  "city_rent_non_capital_codes": [
+   "CH_DEL",
+   "DE_DEL1",
+   "DE_DEL2",
+   "DE_DEL3",
+   "IT_DEL",
+   "NL_DEL",
+   "UK_DEL"
+  ],
+  "EU27_without_CAP_code": [
+   "NL"
+  ]
+ }
+}

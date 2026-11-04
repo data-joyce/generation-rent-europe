@@ -1,0 +1,10 @@
+# DataStudy · Python packages used by the Generation Rent pipeline and the QA checks
+# Tested with Python 3.13.17 on Windows 11 (2026-11-04). Install with:  python -m pip install -r requirements.txt
+pandas==3.1.0
+numpy==2.5.4
+duckdb==2.0.0
+matplotlib==3.11.2
+jupyter_client==8.10.0
+ipykernel==7.4.0
+nbconvert==7.17.2
+nbformat==5.11.1

@@ -1,0 +1,694 @@
+
+====================================================================================================
+sql\generation_rent\00_setup.sql
+====================================================================================================
+
+-- Check: what got loaded?
+┌───────────────────┬─────────────┬──────────────┐
+│    table_name     │ approx_rows │ column_count │
+│      varchar      │    int64    │    int64     │
+├───────────────────┼─────────────┼──────────────┤
+│ city_rent         │         552 │            9 │
+│ country_year      │         588 │           25 │
+│ dim_country       │          52 │            6 │
+│ dim_year          │          31 │            3 │
+│ hicp_monthly      │       99856 │           10 │
+│ long_net_earn     │      199986 │           12 │
+│ long_overburden   │      127035 │           14 │
+│ long_with_parents │       22086 │           12 │
+└───────────────────┴─────────────┴──────────────┘
+
+
+====================================================================================================
+sql\generation_rent\01_explore.sql
+====================================================================================================
+
+-- 1. What columns does the main table have, and what types did DuckDB pick?
+┌────────────────────────────────┬─────────────┬─────────┬─────────┬─────────┬─────────┐
+│          column_name           │ column_type │  null   │   key   │ default │  extra  │
+│            varchar             │   varchar   │ varchar │ varchar │ varchar │ varchar │
+├────────────────────────────────┼─────────────┼─────────┼─────────┼─────────┼─────────┤
+│ geo                            │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ country                        │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ iso2                           │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ year                           │ BIGINT      │ YES     │ NULL    │ NULL    │ NULL    │
+│ house_price_index_2015         │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ house_price_index_2015_flag    │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ net_earnings_eur               │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ net_earnings_eur_flag          │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ net_earnings_pps               │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ net_earnings_pps_flag          │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ price_to_income_vs_lt_avg      │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ price_to_income_vs_lt_avg_flag │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ overburden_total               │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ overburden_total_flag          │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ overburden_18_24               │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ overburden_18_24_flag          │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ overburden_25_29               │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ overburden_25_29_flag          │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ age_leaving_home               │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ age_leaving_home_flag          │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ pct_18_34_with_parents         │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ pct_18_34_with_parents_flag    │ VARCHAR     │ YES     │ NULL    │ NULL    │ NULL    │
+│ hicp_rent_index                │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ hicp_all_index                 │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+│ real_house_price_index_2015    │ DOUBLE      │ YES     │ NULL    │ NULL    │ NULL    │
+└────────────────────────────────┴─────────────┴─────────┴─────────┴─────────┴─────────┘
+  25 rows                                                                    6 columns
+
+
+-- 2. Look at a few rows: Portugal, latest years
+┌─────────┬──────────┬───────┬────────────────────────┬──────────────────┬────────────────────────┐
+│   geo   │ country  │ year  │ house_price_index_2015 │ net_earnings_eur │ pct_18_34_with_parents │
+│ varchar │ varchar  │ int64 │         double         │      double      │         double         │
+├─────────┼──────────┼───────┼────────────────────────┼──────────────────┼────────────────────────┤
+│ PT      │ Portugal │  2025 │                 263.85 │         21449.05 │                   61.0 │
+│ PT      │ Portugal │  2024 │                 224.44 │         20098.79 │                   62.4 │
+│ PT      │ Portugal │  2023 │                 205.76 │         15301.09 │                   68.3 │
+│ PT      │ Portugal │  2022 │                 190.17 │         14213.56 │                   70.7 │
+│ PT      │ Portugal │  2021 │                 168.84 │         13502.54 │                   72.3 │
+└─────────┴──────────┴───────┴────────────────────────┴──────────────────┴────────────────────────┘
+
+
+-- 3. How many countries and years are there? (COUNT DISTINCT)
+┌───────┬────────────┬───────────┬───────┐
+│ geos  │ first_year │ last_year │ rows  │
+│ int64 │   int64    │   int64   │ int64 │
+├───────┼────────────┼───────────┼───────┤
+│    28 │       2005 │      2025 │   588 │
+└───────┴────────────┴───────────┴───────┘
+
+
+-- 4. Coverage: how many countries have each measure, per year? COUNT(column) skips NULLs
+┌───────┬──────────────────┬──────────────┬──────────────────────┬──────────────────────┐
+│ year  │ has_house_prices │ has_earnings │ has_age_leaving_home │ has_overburden_18_24 │
+│ int64 │      int64       │    int64     │        int64         │        int64         │
+├───────┼──────────────────┼──────────────┼──────────────────────┼──────────────────────┤
+│  2005 │               13 │           24 │                   25 │                   23 │
+│  2010 │               27 │           25 │                   28 │                   28 │
+│  2015 │               27 │           27 │                   28 │                   28 │
+│  2020 │               27 │           28 │                   28 │                   28 │
+│  2024 │               27 │           28 │                   28 │                   28 │
+│  2025 │               27 │           28 │                   28 │                   28 │
+└───────┴──────────────────┴──────────────┴──────────────────────┴──────────────────────┘
+
+
+-- 5. Latest year: where do young people leave home latest? (filter out the EU average row)
+┌──────────┬──────────────────┐
+│ country  │ age_leaving_home │
+│ varchar  │      double      │
+├──────────┼──────────────────┤
+│ Croatia  │             31.5 │
+│ Greece   │             30.9 │
+│ Slovakia │             30.9 │
+│ Italy    │             30.2 │
+│ Spain    │             30.2 │
+│ Portugal │             28.8 │
+│ Slovenia │             28.8 │
+│ Bulgaria │             27.9 │
+│ Malta    │             27.5 │
+│ Romania  │             27.4 │
+└──────────┴──────────────────┘
+  10 rows           2 columns
+
+
+-- 6. Which cities are in the city rent table, and from when? (not all are capitals: see is_capital)
+┌────────────────────┬─────────────┬────────────┬────────────┬───────────┬───────┐
+│        city        │ country_geo │ is_capital │ first_year │ last_year │ years │
+│      varchar       │   varchar   │  boolean   │   int64    │   int64   │ int64 │
+├────────────────────┼─────────────┼────────────┼────────────┼───────────┼───────┤
+│ Ankara             │ TR          │ true       │       2013 │      2025 │    13 │
+│ Athina             │ EL          │ true       │       2013 │      2025 │    13 │
+│ Beograd (Belgrade) │ RS          │ true       │       2013 │      2025 │    13 │
+│ Berlin             │ DE          │ true       │       2013 │      2025 │    13 │
+│ Bern (Berne)       │ CH          │ true       │       2013 │      2025 │    13 │
+│ Bonn               │ DE          │ false      │       2013 │      2020 │     8 │
+│ Bratislava         │ SK          │ true       │       2013 │      2025 │    13 │
+│ Bruxelles/Brussel  │ BE          │ true       │       2013 │      2025 │    13 │
+│ Bucuresti          │ RO          │ true       │       2013 │      2025 │    13 │
+│ Budapest           │ HU          │ true       │       2013 │      2025 │    13 │
+│ Culham             │ UK          │ false      │       2013 │      2021 │     9 │
+│ Den Haag           │ NL          │ false      │       2013 │      2025 │    13 │
+│ Dublin             │ IE          │ true       │       2013 │      2025 │    13 │
+│ Genève             │ CH          │ false      │       2013 │      2025 │    13 │
+│ Helsinki           │ FI          │ true       │       2013 │      2025 │    13 │
+│ Karlsruhe          │ DE          │ false      │       2013 │      2023 │    11 │
+│ København          │ DK          │ true       │       2013 │      2025 │    13 │
+│ Lefkosia           │ CY          │ true       │       2013 │      2025 │    13 │
+│ Lisboa             │ PT          │ true       │       2013 │      2025 │    13 │
+│ Ljubljana          │ SI          │ true       │       2013 │      2025 │    13 │
+│  ·                 │ ·           │  ·         │         ·  │        ·  │     · │
+│  ·                 │ ·           │  ·         │         ·  │        ·  │     · │
+│  ·                 │ ·           │  ·         │         ·  │        ·  │     · │
+│ Oslo               │ NO          │ true       │       2013 │      2025 │    13 │
+│ Paris              │ FR          │ true       │       2013 │      2025 │    13 │
+│ Podgorica          │ ME          │ true       │       2013 │      2025 │    13 │
+│ Praha              │ CZ          │ true       │       2013 │      2025 │    13 │
+│ Prishtinë          │ XK          │ true       │       2021 │      2025 │     5 │
+│ Reykjavik          │ IS          │ true       │       2013 │      2025 │    13 │
+│ Riga               │ LV          │ true       │       2013 │      2025 │    13 │
+│ Roma               │ IT          │ true       │       2013 │      2025 │    13 │
+│ Sarajevo           │ BA          │ true       │       2014 │      2025 │    12 │
+│ Skopje             │ MK          │ true       │       2013 │      2025 │    13 │
+│ Sofia              │ BG          │ true       │       2013 │      2025 │    13 │
+│ Stockholm          │ SE          │ true       │       2013 │      2025 │    13 │
+│ Tallinn            │ EE          │ true       │       2013 │      2025 │    13 │
+│ Tiranë (Tirana)    │ AL          │ true       │       2013 │      2025 │    13 │
+│ Valletta           │ MT          │ true       │       2013 │      2025 │    13 │
+│ Varese             │ IT          │ false      │       2013 │      2025 │    13 │
+│ Vilnius            │ LT          │ true       │       2013 │      2025 │    13 │
+│ Warszawa           │ PL          │ true       │       2013 │      2025 │    13 │
+│ Wien               │ AT          │ true       │       2013 │      2025 │    13 │
+│ Zagreb             │ HR          │ true       │       2013 │      2025 │    13 │
+└────────────────────┴─────────────┴────────────┴────────────┴───────────┴───────┘
+  44 rows (40 shown)                                                   6 columns
+
+
+====================================================================================================
+sql\generation_rent\02_prices_vs_earnings.sql
+====================================================================================================
+
+-- 1. Growth of house prices vs net earnings, 2015 → 2023, by country
+┌───────┬─────────────┬──────────────────────────┬──────────────────────────┬────────────────┬─────────────────────┐
+│ rank  │   country   │ house_prices_pct_2015_23 │ net_earnings_pct_2015_23 │ gap_pct_points │ then_prices_2023_25 │
+│ int64 │   varchar   │          double          │          double          │     double     │       double        │
+├───────┼─────────────┼──────────────────────────┼──────────────────────────┼────────────────┼─────────────────────┤
+│     1 │ Hungary     │                    172.5 │                     89.7 │           82.8 │                34.5 │
+│     2 │ Portugal    │                    105.8 │                     32.6 │           73.2 │                28.2 │
+│     3 │ Netherlands │                     83.3 │                     30.7 │           52.6 │                17.4 │
+│     4 │ Luxembourg  │                     71.4 │                     26.3 │           45.1 │                -3.7 │
+│     5 │ Slovenia    │                     86.2 │                     41.9 │           44.3 │                15.4 │
+│     6 │ Spain       │                     47.7 │                     13.2 │           34.5 │                22.3 │
+│     7 │ Ireland     │                     69.0 │                     35.7 │           33.3 │                16.7 │
+│     8 │ Sweden      │                     32.1 │                      2.4 │           29.7 │                 1.0 │
+│     9 │ Austria     │                     63.7 │                     34.5 │           29.2 │                 2.1 │
+│    10 │ Croatia     │                     80.6 │                     51.9 │           28.7 │                25.7 │
+│    11 │ Malta       │                     53.4 │                     25.8 │           27.6 │                13.1 │
+│    12 │ Estonia     │                     97.7 │                     70.5 │           27.2 │                11.6 │
+│    13 │ Slovakia    │                     75.1 │                     54.6 │           20.5 │                16.6 │
+│    14 │ Czechia     │                    111.7 │                     91.5 │           20.2 │                15.9 │
+│    15 │ Germany     │                     50.3 │                     33.4 │           16.9 │                 1.6 │
+│    16 │ Denmark     │                     37.3 │                     22.1 │           15.2 │                11.3 │
+│    17 │ France      │                     31.3 │                     17.1 │           14.2 │                -3.0 │
+│    18 │ Poland      │                     79.8 │                     75.1 │            4.7 │                20.6 │
+│    19 │ Belgium     │                     36.1 │                     31.5 │            4.6 │                 6.5 │
+│    20 │ Latvia      │                     90.9 │                     96.9 │           -6.0 │                12.1 │
+│    21 │ Lithuania   │                    114.2 │                    122.2 │           -8.0 │                20.5 │
+│    22 │ Italy       │                      8.3 │                     16.8 │           -8.5 │                 7.3 │
+│    23 │ Finland     │                      4.6 │                     21.2 │          -16.6 │                -5.3 │
+│    24 │ Bulgaria    │                     86.7 │                    127.9 │          -41.2 │                33.5 │
+│    25 │ Romania     │                     48.4 │                    105.7 │          -57.3 │                11.0 │
+└───────┴─────────────┴──────────────────────────┴──────────────────────────┴────────────────┴─────────────────────┘
+  25 rows                                                                                                6 columns
+
+
+-- 2. Same idea with the official affordability ratio (no break problem):
+┌─────────────────┬────────────┬────────────┐
+│     country     │ ratio_2015 │ ratio_2025 │
+│     varchar     │   double   │   double   │
+├─────────────────┼────────────┼────────────┤
+│ Portugal        │      85.15 │     136.97 │
+│ Czechia         │      93.84 │     118.08 │
+│ Austria         │     101.76 │      115.6 │
+│ Luxembourg      │     102.22 │     113.11 │
+│ Netherlands     │      83.42 │     112.01 │
+│ Greece          │      90.21 │     110.53 │
+│ Slovenia        │       91.2 │     107.77 │
+│ Spain           │      86.35 │     107.54 │
+│ Sweden          │     113.56 │     106.15 │
+│ Denmark         │       97.0 │      105.8 │
+│ Hungary         │      83.25 │     105.29 │
+│ Estonia         │      95.06 │     103.85 │
+│ Belgium         │     105.66 │     102.83 │
+│ Slovakia        │      90.84 │     101.01 │
+│ EU average (27) │      93.67 │     100.03 │
+│ Ireland         │      85.98 │      98.33 │
+│ France          │     101.48 │      95.77 │
+│ Germany         │      93.95 │      95.44 │
+│ Croatia         │      93.41 │      94.83 │
+│ Lithuania       │      85.63 │       94.3 │
+│ Malta           │     103.96 │      94.22 │
+│ Cyprus          │     104.15 │      91.61 │
+│ Latvia          │      82.71 │      87.71 │
+│ Italy           │      98.64 │      86.86 │
+│ Poland          │      89.57 │      86.22 │
+│ Finland         │     102.61 │      76.74 │
+│ Bulgaria        │      76.44 │      64.04 │
+│ Romania         │      82.24 │      47.01 │
+└─────────────────┴────────────┴────────────┘
+  28 rows                         3 columns
+
+
+-- 3. "Real" house prices: after removing general inflation, how much more expensive are homes than in 2015?
+┌─────────────────┬───────────────┐
+│     country     │ real_hpi_2025 │
+│     varchar     │    double     │
+├─────────────────┼───────────────┤
+│ Portugal        │         211.4 │
+│ Hungary         │         210.8 │
+│ Bulgaria        │         174.9 │
+│ Lithuania       │         165.5 │
+│ Croatia         │         164.8 │
+│ Slovenia        │         164.0 │
+│ Ireland         │         161.8 │
+│ Netherlands     │         158.4 │
+│ Czechia         │         157.9 │
+│ Spain           │         142.6 │
+│ Latvia          │         141.9 │
+│ Poland          │         141.1 │
+│ Malta           │         137.8 │
+│ Slovakia        │         136.8 │
+│ Estonia         │         135.8 │
+│ Luxembourg      │         129.1 │
+│ Cyprus          │         127.8 │
+│ Denmark         │         126.0 │
+│ EU average (27) │         121.9 │
+│ Austria         │         120.2 │
+│ Germany         │         115.8 │
+│ Belgium         │         106.9 │
+│ Romania         │         103.0 │
+│ France          │         102.3 │
+│ Sweden          │         100.8 │
+│ Italy           │          93.5 │
+│ Finland         │          81.2 │
+└─────────────────┴───────────────┘
+  27 rows               2 columns
+
+
+====================================================================================================
+sql\generation_rent\03_rent_vs_salary.sql
+====================================================================================================
+
+-- 1. 2025 ranking of EU capitals by rent as % of net monthly salary
+┌───────┬───────────────────┬────────────┬─────────────────────┬──────────────────────┬──────────────────────────────┐
+│ rank  │       city        │  country   │ rent_1bed_eur_month │ net_salary_eur_month │ rent_share_of_net_salary_pct │
+│ int64 │      varchar      │  varchar   │        int64        │        double        │            double            │
+├───────┼───────────────────┼────────────┼─────────────────────┼──────────────────────┼──────────────────────────────┤
+│     1 │ Lisboa            │ Portugal   │                1400 │               1787.0 │                         78.3 │
+│     2 │ Zagreb            │ Croatia    │                1050 │               1408.0 │                         74.6 │
+│     3 │ Praha             │ Czechia    │                1250 │               1742.0 │                         71.8 │
+│     4 │ Budapest          │ Hungary    │                 910 │               1286.0 │                         70.8 │
+│     5 │ Stockholm         │ Sweden     │                2100 │               3246.0 │                         64.7 │
+│     6 │ Athina            │ Greece     │                1150 │               1792.0 │                         64.2 │
+│     7 │ Bratislava        │ Slovakia   │                 910 │               1508.0 │                         60.3 │
+│     8 │ Bucuresti         │ Romania    │                 670 │               1156.0 │                         57.9 │
+│     9 │ Madrid            │ Spain      │                1300 │               2253.0 │                         57.7 │
+│    10 │ Paris             │ France     │                1550 │               2696.0 │                         57.5 │
+│    11 │ Roma              │ Italy      │                1300 │               2316.0 │                         56.1 │
+│    12 │ Riga              │ Latvia     │                 870 │               1586.0 │                         54.8 │
+│    13 │ Sofia             │ Bulgaria   │                 650 │               1204.0 │                         54.0 │
+│    14 │ Warszawa          │ Poland     │                 840 │               1591.0 │                         52.8 │
+│    15 │ Vilnius           │ Lithuania  │                 830 │               1591.0 │                         52.2 │
+│    16 │ Dublin            │ Ireland    │                2000 │               3919.0 │                         51.0 │
+│    17 │ Valletta          │ Malta      │                1050 │               2106.0 │                         49.9 │
+│    18 │ København         │ Denmark    │                1800 │               3786.0 │                         47.5 │
+│    19 │ Ljubljana         │ Slovenia   │                 950 │               2023.0 │                         47.0 │
+│    20 │ Berlin            │ Germany    │                1350 │               3045.0 │                         44.3 │
+│    21 │ Luxembourg        │ Luxembourg │                1900 │               4656.0 │                         40.8 │
+│    22 │ Tallinn           │ Estonia    │                 720 │               1878.0 │                         38.3 │
+│    23 │ Bruxelles/Brussel │ Belgium    │                1150 │               3035.0 │                         37.9 │
+│    24 │ Helsinki          │ Finland    │                1150 │               3141.0 │                         36.6 │
+│    25 │ Wien              │ Austria    │                1250 │               3529.0 │                         35.4 │
+│    26 │ Lefkosia          │ Cyprus     │                 750 │               2362.0 │                         31.8 │
+└───────┴───────────────────┴────────────┴─────────────────────┴──────────────────────┴──────────────────────────────┘
+  26 rows                                                                                                  6 columns
+
+
+-- 2. How much have capital rents risen since 2015? (levels: the earnings break doesn't matter here)
+┌────────────────────┬───────────┬───────────┬────────────┐
+│        city        │ rent_2015 │ rent_2025 │ pct_change │
+│      varchar       │   int64   │   int64   │   double   │
+├────────────────────┼───────────┼───────────┼────────────┤
+│ Zagreb             │       490 │      1050 │      114.3 │
+│ Lisboa             │       660 │      1400 │      112.1 │
+│ Sofia              │       320 │       650 │      103.1 │
+│ Reykjavik          │       960 │      1900 │       97.9 │
+│ Praha              │       640 │      1250 │       95.3 │
+│ Athina             │       590 │      1150 │       94.9 │
+│ Lefkosia           │       390 │       750 │       92.3 │
+│ Madrid             │       710 │      1300 │       83.1 │
+│ Ljubljana          │       530 │       950 │       79.2 │
+│ Ankara             │       350 │       610 │       74.3 │
+│ Valletta           │       610 │      1050 │       72.1 │
+│ Budapest           │       530 │       910 │       71.7 │
+│ Sarajevo           │       460 │       770 │       67.4 │
+│ Dublin             │      1200 │      2000 │       66.7 │
+│ Tiranë (Tirana)    │       370 │       610 │       64.9 │
+│ Vilnius            │       540 │       830 │       53.7 │
+│ Berlin             │       890 │      1350 │       51.7 │
+│ København          │      1200 │      1800 │       50.0 │
+│ Skopje             │       220 │       330 │       50.0 │
+│ Podgorica          │       380 │       560 │       47.4 │
+│ Bruxelles/Brussel  │       800 │      1150 │       43.8 │
+│ Wien               │       870 │      1250 │       43.7 │
+│ Bucuresti          │       470 │       670 │       42.6 │
+│ Warszawa           │       590 │       840 │       42.4 │
+│ Bratislava         │       640 │       910 │       42.2 │
+│ Paris              │      1100 │      1550 │       40.9 │
+│ Luxembourg         │      1350 │      1900 │       40.7 │
+│ Beograd (Belgrade) │       580 │       810 │       39.7 │
+│ Riga               │       630 │       870 │       38.1 │
+│ Roma               │       950 │      1300 │       36.8 │
+│ Stockholm          │      1600 │      2100 │       31.3 │
+│ Tallinn            │       550 │       720 │       30.9 │
+│ Oslo               │      1550 │      2000 │       29.0 │
+│ Bern (Berne)       │      1550 │      1750 │       12.9 │
+│ Helsinki           │      1050 │      1150 │        9.5 │
+│ London             │      2350 │      2350 │        0.0 │
+└────────────────────┴───────────┴───────────┴────────────┘
+  36 rows                                       4 columns
+
+
+-- 3. Lisbon year by year, with its rank among capitals each year (PARTITION BY year)
+┌───────┬─────────┬─────────────────────┬──────────────────────────────┬────────────────┬────────────────────┐
+│ year  │  city   │ rent_1bed_eur_month │ rent_share_of_net_salary_pct │ rank_that_year │ capitals_that_year │
+│ int64 │ varchar │        int64        │            double            │     int64      │       int64        │
+├───────┼─────────┼─────────────────────┼──────────────────────────────┼────────────────┼────────────────────┤
+│  2013 │ Lisboa  │                 550 │                         56.3 │             12 │                 25 │
+│  2014 │ Lisboa  │                 600 │                         61.7 │             11 │                 26 │
+│  2015 │ Lisboa  │                 660 │                         68.7 │             10 │                 25 │
+│  2016 │ Lisboa  │                 770 │                         78.9 │             10 │                 25 │
+│  2017 │ Lisboa  │                 890 │                         89.5 │              5 │                 26 │
+│  2018 │ Lisboa  │                1050 │                        101.6 │              1 │                 26 │
+│  2019 │ Lisboa  │                1050 │                         98.3 │              2 │                 26 │
+│  2020 │ Lisboa  │                1100 │                        102.1 │              1 │                 26 │
+│  2021 │ Lisboa  │                1050 │                         93.3 │              1 │                 26 │
+│  2022 │ Lisboa  │                1150 │                         97.1 │              1 │                 26 │
+│  2023 │ Lisboa  │                1350 │                        105.9 │              1 │                 26 │
+│  2024 │ Lisboa  │                1250 │                         74.6 │              1 │                 26 │
+│  2025 │ Lisboa  │                1400 │                         78.3 │              1 │                 26 │
+└───────┴─────────┴─────────────────────┴──────────────────────────────┴────────────────┴────────────────────┘
+  13 rows                                                                                          6 columns
+
+
+====================================================================================================
+sql\generation_rent\04_leaving_home.sql
+====================================================================================================
+
+-- 1. Latest year side by side: age leaving home, % living with parents, housing stress of 18-24s
+┌─────────────┬──────────────────┬────────────────────────┬──────────────────┬───────────────────────────┬────────────────────┐
+│   country   │ age_leaving_home │ pct_18_34_with_parents │ overburden_18_24 │ price_to_income_vs_lt_avg │ leaving_home_group │
+│   varchar   │      double      │         double         │      double      │          double           │      varchar       │
+├─────────────┼──────────────────┼────────────────────────┼──────────────────┼───────────────────────────┼────────────────────┤
+│ Croatia     │             31.5 │                   75.3 │              2.0 │                     94.83 │ 30+ (late)         │
+│ Greece      │             30.9 │                   68.0 │             28.9 │                    110.53 │ 30+ (late)         │
+│ Slovakia    │             30.9 │                   69.4 │              3.5 │                    101.01 │ 30+ (late)         │
+│ Italy       │             30.2 │                   69.1 │              3.8 │                     86.86 │ 30+ (late)         │
+│ Spain       │             30.2 │                   68.7 │              5.7 │                    107.54 │ 30+ (late)         │
+│ Portugal    │             28.8 │                   61.0 │              6.6 │                    136.97 │ 25-29              │
+│ Slovenia    │             28.8 │                   60.4 │              2.3 │                    107.77 │ 25-29              │
+│ Bulgaria    │             27.9 │                   57.8 │              6.4 │                     64.04 │ 25-29              │
+│ Malta       │             27.5 │                   52.1 │              2.1 │                     94.22 │ 25-29              │
+│ Romania     │             27.4 │                   53.2 │             14.9 │                     47.01 │ 25-29              │
+│ Hungary     │             27.3 │                   55.2 │              5.9 │                    105.29 │ 25-29              │
+│ Cyprus      │             27.0 │                   58.0 │              1.7 │                     91.61 │ 25-29              │
+│ Ireland     │             26.9 │                   61.7 │              5.4 │                     98.33 │ 25-29              │
+│ Poland      │             26.8 │                   66.5 │              4.0 │                     86.22 │ 25-29              │
+│ Luxembourg  │             26.6 │                   46.1 │              6.3 │                    113.11 │ 25-29              │
+│ Belgium     │             26.2 │                   51.4 │              5.2 │                    102.83 │ 25-29              │
+│ Czechia     │             25.8 │                   46.0 │              8.3 │                    118.08 │ 25-29              │
+│ Latvia      │             25.7 │                   53.1 │              5.4 │                     87.71 │ 25-29              │
+│ Austria     │             25.2 │                   40.3 │              4.5 │                     115.6 │ 25-29              │
+│ Germany     │             24.1 │                   32.1 │             16.8 │                     95.44 │ under 25 (early)   │
+│ France      │             23.8 │                   41.1 │              9.3 │                     95.77 │ under 25 (early)   │
+│ Netherlands │             23.4 │                   34.9 │             15.5 │                    112.01 │ under 25 (early)   │
+│ Sweden      │             23.1 │                   25.1 │             15.4 │                    106.15 │ under 25 (early)   │
+│ Estonia     │             22.7 │                   36.7 │             11.4 │                    103.85 │ under 25 (early)   │
+│ Lithuania   │             22.7 │                   35.0 │              7.4 │                      94.3 │ under 25 (early)   │
+│ Denmark     │             21.8 │                   18.4 │             27.2 │                     105.8 │ under 25 (early)   │
+│ Finland     │             21.3 │                   16.6 │             14.1 │                     76.74 │ under 25 (early)   │
+└─────────────┴──────────────────┴────────────────────────┴──────────────────┴───────────────────────────┴────────────────────┘
+  27 rows                                                                                                           6 columns
+
+
+-- 2. Averages per group (does a later age go with more housing stress or worse affordability?)
+┌─────────────┬───────────┬────────────────────────────────────────────────────────┬──────────────────────┬──────────────────────┬──────────────────────┐
+│     grp     │ countries │                         which                          │ avg_pct_with_parents │ avg_overburden_18_24 │ avg_net_earnings_pps │
+│   varchar   │   int64   │                        varchar                         │        double        │        double        │        double        │
+├─────────────┼───────────┼────────────────────────────────────────────────────────┼──────────────────────┼──────────────────────┼──────────────────────┤
+│ 1. 30+      │         5 │ EL, ES, HR, IT, SK                                     │                 70.1 │                  8.8 │              25354.0 │
+│ 2. 25-29    │        14 │ AT, BE, BG, CY, CZ, HU, IE, LU, LV, MT, PL, PT, RO, SI │                 54.5 │                  5.6 │              27338.0 │
+│ 3. under 25 │         8 │ DE, DK, EE, FI, FR, LT, NL, SE                         │                 30.0 │                 14.6 │              29860.0 │
+└─────────────┴───────────┴────────────────────────────────────────────────────────┴──────────────────────┴──────────────────────┴──────────────────────┘
+
+
+-- 3. Correlations across countries (-1 … +1). Which factor moves most with the age of leaving home?
+┌─────────────────────┬─────────────────────┬────────────────────┬────────┬──────────────┬───────────────────┐
+│ vs_net_earnings_pps │ vs_overburden_18_24 │ vs_price_to_income │ n_pps  │ n_overburden │ n_price_to_income │
+│       double        │       double        │       double       │ uint32 │    uint32    │      uint32       │
+├─────────────────────┼─────────────────────┼────────────────────┼────────┼──────────────┼───────────────────┤
+│               -0.33 │               -0.38 │               0.03 │     27 │           27 │                27 │
+└─────────────────────┴─────────────────────┴────────────────────┴────────┴──────────────┴───────────────────┘
+
+
+-- 4. Countries above / below the EU average age (scalar subquery)
+┌─────────────┬──────────────────┬─────────────────┐
+│   country   │ age_leaving_home │ years_vs_eu_avg │
+│   varchar   │      double      │     double      │
+├─────────────┼──────────────────┼─────────────────┤
+│ Croatia     │             31.5 │             5.2 │
+│ Greece      │             30.9 │             4.6 │
+│ Slovakia    │             30.9 │             4.6 │
+│ Italy       │             30.2 │             3.9 │
+│ Spain       │             30.2 │             3.9 │
+│ Portugal    │             28.8 │             2.5 │
+│ Slovenia    │             28.8 │             2.5 │
+│ Bulgaria    │             27.9 │             1.6 │
+│ Malta       │             27.5 │             1.2 │
+│ Romania     │             27.4 │             1.1 │
+│ Hungary     │             27.3 │             1.0 │
+│ Cyprus      │             27.0 │             0.7 │
+│ Ireland     │             26.9 │             0.6 │
+│ Poland      │             26.8 │             0.5 │
+│ Luxembourg  │             26.6 │             0.3 │
+│ Belgium     │             26.2 │            -0.1 │
+│ Czechia     │             25.8 │            -0.5 │
+│ Latvia      │             25.7 │            -0.6 │
+│ Austria     │             25.2 │            -1.1 │
+│ Germany     │             24.1 │            -2.2 │
+│ France      │             23.8 │            -2.5 │
+│ Netherlands │             23.4 │            -2.9 │
+│ Sweden      │             23.1 │            -3.2 │
+│ Estonia     │             22.7 │            -3.6 │
+│ Lithuania   │             22.7 │            -3.6 │
+│ Denmark     │             21.8 │            -4.5 │
+│ Finland     │             21.3 │            -5.0 │
+└─────────────┴──────────────────┴─────────────────┘
+  27 rows                                3 columns
+
+
+====================================================================================================
+sql\generation_rent\05_portugal_vs_eu.sql
+====================================================================================================
+
+-- 1. Portugal and EU side by side, every year (self-join of the same table)
+┌───────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────────┬─────────────────────┐
+│ year  │ pt_house_prices │ eu_house_prices │ pt_with_parents │ eu_with_parents │ pt_overburden_25_29 │ eu_overburden_25_29 │
+│ int64 │     double      │     double      │     double      │     double      │       double        │       double        │
+├───────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────────┼─────────────────────┤
+│  2010 │          107.36 │          100.26 │            61.8 │            48.7 │                 3.8 │                11.5 │
+│  2011 │          102.09 │          100.88 │            60.9 │            49.4 │                 7.7 │                12.8 │
+│  2012 │           94.87 │           98.76 │            60.5 │            49.9 │                10.2 │                13.6 │
+│  2013 │           93.09 │           97.06 │            60.6 │            50.1 │                 9.7 │                13.8 │
+│  2014 │           97.04 │           97.75 │            61.9 │            50.3 │                 9.0 │                14.1 │
+│  2015 │           100.0 │           100.0 │            62.9 │            50.2 │                10.7 │                13.6 │
+│  2016 │          107.12 │          104.31 │            62.8 │            50.3 │                 9.2 │                13.2 │
+│  2017 │          117.02 │          109.31 │            63.4 │            49.9 │                 8.0 │                12.5 │
+│  2018 │          129.03 │          114.81 │            63.9 │            50.0 │                 7.0 │                12.1 │
+│  2019 │          141.88 │           120.4 │            64.1 │            50.5 │                 6.4 │                11.0 │
+│  2020 │          154.33 │          127.15 │            69.8 │            49.5 │                 4.4 │                 9.7 │
+│  2021 │          168.84 │          137.87 │            72.3 │            49.7 │                 6.3 │                10.4 │
+│  2022 │          190.17 │          148.86 │            70.7 │            49.7 │                 7.8 │                10.5 │
+│  2023 │          205.76 │          148.44 │            68.3 │            49.7 │                 6.6 │                10.6 │
+│  2024 │          224.44 │          153.42 │            62.4 │            49.1 │                 8.9 │                10.3 │
+│  2025 │          263.85 │          161.89 │            61.0 │            49.8 │                 8.4 │                 9.4 │
+└───────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────────┴─────────────────────┘
+  16 rows                                                                                                         7 columns
+
+
+-- 2. Year-on-year change in house prices with LAG (the value from the previous row)
+┌───────────┬───────┬────────────────────────┬──────────────────────┐
+│    geo    │ year  │ house_price_index_2015 │ house_prices_yoy_pct │
+│  varchar  │ int64 │         double         │        double        │
+├───────────┼───────┼────────────────────────┼──────────────────────┤
+│ EU27_2020 │  2015 │                  100.0 │                 NULL │
+│ EU27_2020 │  2016 │                 104.31 │                  4.3 │
+│ EU27_2020 │  2017 │                 109.31 │                  4.8 │
+│ EU27_2020 │  2018 │                 114.81 │                  5.0 │
+│ EU27_2020 │  2019 │                  120.4 │                  4.9 │
+│ EU27_2020 │  2020 │                 127.15 │                  5.6 │
+│ EU27_2020 │  2021 │                 137.87 │                  8.4 │
+│ EU27_2020 │  2022 │                 148.86 │                  8.0 │
+│ EU27_2020 │  2023 │                 148.44 │                 -0.3 │
+│ EU27_2020 │  2024 │                 153.42 │                  3.4 │
+│ EU27_2020 │  2025 │                 161.89 │                  5.5 │
+│ PT        │  2015 │                  100.0 │                 NULL │
+│ PT        │  2016 │                 107.12 │                  7.1 │
+│ PT        │  2017 │                 117.02 │                  9.2 │
+│ PT        │  2018 │                 129.03 │                 10.3 │
+│ PT        │  2019 │                 141.88 │                 10.0 │
+│ PT        │  2020 │                 154.33 │                  8.8 │
+│ PT        │  2021 │                 168.84 │                  9.4 │
+│ PT        │  2022 │                 190.17 │                 12.6 │
+│ PT        │  2023 │                 205.76 │                  8.2 │
+│ PT        │  2024 │                 224.44 │                  9.1 │
+│ PT        │  2025 │                 263.85 │                 17.6 │
+└───────────┴───────┴────────────────────────┴──────────────────────┘
+  22 rows                                                 4 columns
+
+
+-- 3. Latest monthly inflation (annual rate, %) for rents, food, energy and everything, PT vs EU
+┌───────────┬─────────┬──────────┬─────────────────────────────────────────┬─────────────────┐
+│    geo    │  month  │ coicop18 │             coicop18_label              │ annual_rate_pct │
+│  varchar  │ varchar │ varchar  │                 varchar                 │     double      │
+├───────────┼─────────┼──────────┼─────────────────────────────────────────┼─────────────────┤
+│ EU27_2020 │ 2026-09 │ CP011    │ Food                                    │             0.6 │
+│ PT        │ 2026-09 │ CP011    │ Food                                    │             2.4 │
+│ EU27_2020 │ 2026-09 │ CP041    │ Actual rental payments made for housing │             2.9 │
+│ PT        │ 2026-09 │ CP041    │ Actual rental payments made for housing │             5.2 │
+│ EU27_2020 │ 2026-09 │ CP045    │ Electricity, gas and other fuels        │             8.2 │
+│ PT        │ 2026-09 │ CP045    │ Electricity, gas and other fuels        │             1.7 │
+│ EU27_2020 │ 2026-09 │ TOTAL    │ Total                                   │             3.8 │
+│ PT        │ 2026-09 │ TOTAL    │ Total                                   │             3.6 │
+└───────────┴─────────┴──────────┴─────────────────────────────────────────┴─────────────────┘
+
+
+-- 4. Rents vs overall prices since 2015 (HICP index, annual averages): who's above the line?
+┌─────────────────┬────────────┬─────────────────┬─────────────────┐
+│     country     │ rents_2025 │ all_prices_2025 │ rents_minus_all │
+│     varchar     │   double   │     double      │     double      │
+├─────────────────┼────────────┼─────────────────┼─────────────────┤
+│ Ireland         │      173.6 │           121.8 │            51.7 │
+│ Slovenia        │      173.8 │           131.0 │            42.8 │
+│ Hungary         │      205.4 │           174.0 │            31.5 │
+│ Lithuania       │      183.5 │           156.0 │            27.5 │
+│ Malta           │      153.1 │           125.9 │            27.2 │
+│ Poland          │      173.6 │           153.7 │            19.9 │
+│ Portugal        │      136.4 │           124.8 │            11.5 │
+│ Cyprus          │      129.2 │           118.1 │            11.2 │
+│ Croatia         │      146.5 │           137.8 │             8.7 │
+│ Austria         │      147.2 │           139.0 │             8.2 │
+│ Bulgaria        │      148.5 │           142.5 │             6.0 │
+│ Estonia         │      165.3 │           162.6 │             2.7 │
+│ Finland         │      118.4 │           122.0 │            -3.6 │
+│ Romania         │      156.5 │           160.1 │            -3.6 │
+│ Denmark         │      117.4 │           121.3 │            -3.9 │
+│ Belgium         │      130.3 │           135.5 │            -5.2 │
+│ Netherlands     │      129.3 │           135.9 │            -6.6 │
+│ Sweden          │      125.4 │           132.4 │            -6.9 │
+│ Czechia         │      148.3 │           155.4 │            -7.1 │
+│ Greece          │      113.3 │           122.8 │            -9.5 │
+│ Italy           │      112.6 │           124.3 │           -11.7 │
+│ EU average (27) │      120.5 │           132.9 │           -12.4 │
+│ Spain           │      113.6 │           126.6 │           -13.0 │
+│ Luxembourg      │      114.6 │           127.9 │           -13.4 │
+│ Germany         │      118.1 │           131.9 │           -13.8 │
+│ France          │      109.7 │           124.4 │           -14.7 │
+│ Slovakia        │      127.5 │           149.2 │           -21.7 │
+│ Latvia          │      127.8 │           150.9 │           -23.1 │
+└─────────────────┴────────────┴─────────────────┴─────────────────┘
+  28 rows                                                4 columns
+
+
+====================================================================================================
+sql\generation_rent\06_data_quality.sql
+====================================================================================================
+
+-- 1. Uniqueness: is there exactly one row per country-year? (should return NO rows)
+┌─────────┬───────┬───────┐
+│   geo   │ year  │   n   │
+│ varchar │ int64 │ int64 │
+└─────────┴───────┴───────┘
+          0 rows         
+
+
+-- 2. Missing values in the latest year, per measure
+┌───────────┬──────────────────────┬──────────────────┬──────────────────────────┬──────────────────────────┐
+│ countries │ missing_house_prices │ missing_earnings │ missing_overburden_18_24 │ missing_age_leaving_home │
+│   int64   │        int64         │      int64       │          int64           │          int64           │
+├───────────┼──────────────────────┼──────────────────┼──────────────────────────┼──────────────────────────┤
+│        28 │                    1 │                0 │                        0 │                        0 │
+└───────────┴──────────────────────┴──────────────────┴──────────────────────────┴──────────────────────────┘
+
+
+-- 3. Breaks in series: which years have flag 'b' in net earnings? (spot the EU-wide 2024 break)
+┌───────┬────────────────┐
+│ year  │ geos_flagged_b │
+│ int64 │     int64      │
+├───────┼────────────────┤
+│  2024 │             28 │
+└───────┴────────────────┘
+
+
+-- 4. Where do low-reliability values ('u') appear? Only in SMALL subgroups.
+┌──────────┬─────────┬────────────────────────┐
+│ rskpovth │   age   │ low_reliability_values │
+│ varchar  │ varchar │         int64          │
+├──────────┼─────────┼────────────────────────┤
+│ B_60     │ Y25-29  │                     67 │
+│ B_60     │ Y16-19  │                     32 │
+│ B_60     │ Y20-24  │                     27 │
+│ B_60     │ Y_LT6   │                     23 │
+│ B_60     │ Y6-11   │                     19 │
+└──────────┴─────────┴────────────────────────┘
+
+
+-- 5. The 2025 low-reliability values for young people below the poverty line: mark these in charts
+┌─────────┬─────────┬─────────┬────────┬─────────┬───────────────────────────────────────┐
+│   geo   │  year   │   age   │ value  │  flag   │              flag_label               │
+│ varchar │ varchar │ varchar │ double │ varchar │                varchar                │
+├─────────┼─────────┼─────────┼────────┼─────────┼───────────────────────────────────────┤
+│ MT      │ 2025    │ Y18-24  │   18.8 │ u       │ low reliability                       │
+│ CY      │ 2025    │ Y25-29  │   17.4 │ u       │ low reliability                       │
+│ CZ      │ 2025    │ Y25-29  │   63.4 │ u       │ low reliability                       │
+│ IE      │ 2025    │ Y25-29  │   NULL │ u       │ low reliability                       │
+│ LT      │ 2025    │ Y25-29  │   41.0 │ pu      │ provisional, low reliability          │
+│ LV      │ 2025    │ Y25-29  │   44.4 │ u       │ low reliability                       │
+│ SK      │ 2025    │ Y25-29  │   12.2 │ bu      │ break in time series, low reliability │
+└─────────┴─────────┴─────────┴────────┴─────────┴───────────────────────────────────────┘
+
+
+-- 6. THE DOUBLE-COUNTING TRAP. Long tables repeat each country-year once per combination of
+┌──────────────────────────────┬───────────┬───────────┐
+│           approach           │ rows_used │ avg_value │
+│           varchar            │   int64   │  double   │
+├──────────────────────────────┼───────────┼───────────┤
+│ no filters (WRONG)           │       153 │      12.5 │
+│ all dimensions fixed (RIGHT) │         1 │       6.3 │
+└──────────────────────────────┴───────────┴───────────┘
+
+
+-- 7. Which combinations exist? Always check the dimensions of a long table first
+┌─────────┬─────────────────────┬───────┐
+│   age   │      age_label      │ rows  │
+│ varchar │       varchar       │ int64 │
+├─────────┼─────────────────────┼───────┤
+│ TOTAL   │ Total               │  7497 │
+│ Y12-17  │ From 12 to 17 years │  7497 │
+│ Y15-19  │ From 15 to 19 years │  7443 │
+│ Y15-24  │ From 15 to 24 years │  7443 │
+│ Y15-29  │ From 15 to 29 years │  7443 │
+│ Y16-19  │ From 16 to 19 years │  7443 │
+│ Y16-24  │ From 16 to 24 years │  7443 │
+│ Y16-29  │ From 16 to 29 years │  7443 │
+│ Y18-24  │ From 18 to 24 years │  7497 │
+│ Y18-64  │ From 18 to 64 years │  7497 │
+│ Y20-24  │ From 20 to 24 years │  7452 │
+│ Y20-29  │ From 20 to 29 years │  7452 │
+│ Y25-29  │ From 25 to 29 years │  7497 │
+│ Y6-11   │ From 6 to 11 years  │  7497 │
+│ Y_GE65  │ 65 years or over    │  7497 │
+│ Y_LT18  │ Less than 18 years  │  7497 │
+│ Y_LT6   │ Less than 6 years   │  7497 │
+└─────────┴─────────────────────┴───────┘
+  17 rows                     3 columns
+
+
+-- 8. Same trap in net earnings: 3 currencies × 6 earnings parts × 13 household types per country-year
+┌──────────────────┬────────────┬────────────────┬─────────────────┐
+│ rows_for_PT_2025 │ currencies │ earnings_parts │ household_types │
+│      int64       │   int64    │     int64      │      int64      │
+├──────────────────┼────────────┼────────────────┼─────────────────┤
+│              234 │          3 │              6 │              13 │
+└──────────────────┴────────────┴────────────────┴─────────────────┘
+

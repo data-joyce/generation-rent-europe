@@ -1,0 +1,104 @@
+{
+ "fresh_run_errors_warnings": [
+  "none"
+ ],
+ "cells_with_changed_output": "none",
+ "cells_differing_only_in_printed_folder_paths": [
+  2,
+  30
+ ],
+ "saved_execution_counts": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15
+ ],
+ "saved_run_was_sequential_fresh_kernel": true,
+ "names_used_before_definition": "none",
+ "absolute_hardcoded_paths": "none",
+ "path_logic": "BASE = cwd.parent if cwd is named 'python' else cwd; datasets/ is searched at BASE and upwards; outputs go to BASE/clean/generation-rent",
+ "output_files": {
+  "city_rent.csv": {
+   "orig_bytes": 29933,
+   "fresh_bytes": 29933,
+   "identical_sha256": true
+  },
+  "country_year.csv": {
+   "orig_bytes": 76917,
+   "fresh_bytes": 76917,
+   "identical_sha256": true
+  },
+  "dim_country.csv": {
+   "orig_bytes": 2280,
+   "fresh_bytes": 2280,
+   "identical_sha256": true
+  },
+  "dim_year.csv": {
+   "orig_bytes": 757,
+   "fresh_bytes": 757,
+   "identical_sha256": true
+  },
+  "hicp_monthly.csv": {
+   "orig_bytes": 7447508,
+   "fresh_bytes": 7447508,
+   "identical_sha256": true
+  },
+  "long_age_leave.csv": {
+   "orig_bytes": 114969,
+   "fresh_bytes": 114969,
+   "identical_sha256": true
+  },
+  "long_city_rents.csv": {
+   "orig_bytes": 366204,
+   "fresh_bytes": 366204,
+   "identical_sha256": true
+  },
+  "long_hicp.csv": {
+   "orig_bytes": 25589659,
+   "fresh_bytes": 25589659,
+   "identical_sha256": true
+  },
+  "long_hpi_a.csv": {
+   "orig_bytes": 657480,
+   "fresh_bytes": 657480,
+   "identical_sha256": true
+  },
+  "long_hpi_q.csv": {
+   "orig_bytes": 3364610,
+   "fresh_bytes": 3364610,
+   "identical_sha256": true
+  },
+  "long_net_earn.csv": {
+   "orig_bytes": 31335197,
+   "fresh_bytes": 31335197,
+   "identical_sha256": true
+  },
+  "long_overburden.csv": {
+   "orig_bytes": 12213866,
+   "fresh_bytes": 12213866,
+   "identical_sha256": true
+  },
+  "long_ptir.csv": {
+   "orig_bytes": 174732,
+   "fresh_bytes": 174732,
+   "identical_sha256": true
+  },
+  "long_with_parents.csv": {
+   "orig_bytes": 1791158,
+   "fresh_bytes": 1791158,
+   "identical_sha256": true
+  }
+ },
+ "files_only_in_fresh_run": []
+}

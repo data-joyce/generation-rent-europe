@@ -1,0 +1,40 @@
+# ---- Raw data: re-download from Eurostat (links in each datasets/*/README.md) ----
+datasets/**/*.csv
+datasets/**/*.tsv
+datasets/**/*.zip
+datasets/practice-sales/
+
+# ---- Large, rebuildable outputs ----
+pipeline/clean/generation-rent/long_*.csv
+*.duckdb
+*.duckdb.wal
+
+# ---- QA throwaway copies and one-off baseline ----
+qa/sandbox/
+qa/sandbox_inplace/
+qa/baseline_before_fixes/
+
+# ---- Empty practice folders at the root (not pipeline/python, pipeline/sql) ----
+/python/
+/sql/
+/excel/
+/powerbi/
+/tableau/
+
+# ---- Python / Jupyter ----
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+
+# ---- Power BI / Office temp files ----
+*.pbix.bak
+~$*
+.~lock.*
+
+# ---- OS ----
+Thumbs.db
+desktop.ini
+.DS_Store

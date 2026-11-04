@@ -1,0 +1,330 @@
+{
+ "queries": [
+  {
+   "id": "00.check",
+   "runs": "RUNS",
+   "rows": 8,
+   "pandas_match": "n/a (metadata query)"
+  },
+  {
+   "id": "01.Q1",
+   "runs": "RUNS",
+   "rows": 25,
+   "pandas_match": "n/a (metadata query)"
+  },
+  {
+   "id": "01.Q2",
+   "runs": "RUNS",
+   "rows": 5,
+   "pandas_match": "EXACT",
+   "detail": "5 rows x 6 cols identical, same order"
+  },
+  {
+   "id": "01.Q3",
+   "runs": "RUNS",
+   "rows": 1,
+   "pandas_match": "EXACT",
+   "detail": "1 rows x 4 cols identical, same order"
+  },
+  {
+   "id": "01.Q4",
+   "runs": "RUNS",
+   "rows": 6,
+   "pandas_match": "EXACT",
+   "detail": "6 rows x 5 cols identical, same order"
+  },
+  {
+   "id": "01.Q5",
+   "runs": "RUNS",
+   "rows": 10,
+   "pandas_match": "EXACT",
+   "detail": "10 rows x 2 cols identical, same order"
+  },
+  {
+   "id": "01.Q6",
+   "runs": "RUNS",
+   "rows": 44,
+   "pandas_match": "EXACT",
+   "detail": "44 rows x 6 cols identical, same order"
+  },
+  {
+   "id": "02.Q1",
+   "runs": "RUNS",
+   "rows": 25,
+   "pandas_match": "EXACT",
+   "detail": "25 rows x 6 cols identical, same order"
+  },
+  {
+   "id": "02.Q2",
+   "runs": "RUNS",
+   "rows": 28,
+   "pandas_match": "EXACT",
+   "detail": "28 rows x 3 cols identical, same order"
+  },
+  {
+   "id": "02.Q3",
+   "runs": "RUNS",
+   "rows": 27,
+   "pandas_match": "EXACT",
+   "detail": "27 rows x 2 cols identical, same order"
+  },
+  {
+   "id": "03.Q1",
+   "runs": "RUNS",
+   "rows": 26,
+   "pandas_match": "EXACT",
+   "detail": "26 rows x 6 cols identical, same order"
+  },
+  {
+   "id": "03.Q2",
+   "runs": "RUNS",
+   "rows": 36,
+   "pandas_match": "EXACT",
+   "detail": "36 rows x 4 cols identical, same order"
+  },
+  {
+   "id": "03.Q3",
+   "runs": "RUNS",
+   "rows": 13,
+   "pandas_match": "EXACT",
+   "detail": "13 rows x 6 cols identical, same order"
+  },
+  {
+   "id": "04.Q1",
+   "runs": "RUNS",
+   "rows": 27,
+   "pandas_match": "EXACT",
+   "detail": "27 rows x 6 cols identical, same order"
+  },
+  {
+   "id": "04.Q2",
+   "runs": "RUNS",
+   "rows": 3,
+   "pandas_match": "EXACT",
+   "detail": "3 rows x 6 cols identical, same order"
+  },
+  {
+   "id": "04.Q3",
+   "runs": "RUNS",
+   "rows": 1,
+   "pandas_match": "EXACT",
+   "detail": "1 rows x 6 cols identical, same order"
+  },
+  {
+   "id": "04.Q4",
+   "runs": "RUNS",
+   "rows": 27,
+   "pandas_match": "EXACT",
+   "detail": "27 rows x 3 cols identical, same order"
+  },
+  {
+   "id": "05.Q1",
+   "runs": "RUNS",
+   "rows": 16,
+   "pandas_match": "EXACT",
+   "detail": "16 rows x 7 cols identical, same order"
+  },
+  {
+   "id": "05.Q2",
+   "runs": "RUNS",
+   "rows": 22,
+   "pandas_match": "EXACT",
+   "detail": "22 rows x 4 cols identical, same order"
+  },
+  {
+   "id": "05.Q3",
+   "runs": "RUNS",
+   "rows": 8,
+   "pandas_match": "EXACT",
+   "detail": "8 rows x 5 cols identical, same order"
+  },
+  {
+   "id": "05.Q4",
+   "runs": "RUNS",
+   "rows": 28,
+   "pandas_match": "EXACT",
+   "detail": "28 rows x 4 cols identical, same order"
+  },
+  {
+   "id": "06.Q1",
+   "runs": "RUNS",
+   "rows": 0,
+   "pandas_match": "EXACT",
+   "detail": "0 rows x 3 cols identical, same order"
+  },
+  {
+   "id": "06.Q2",
+   "runs": "RUNS",
+   "rows": 1,
+   "pandas_match": "EXACT",
+   "detail": "1 rows x 5 cols identical, same order"
+  },
+  {
+   "id": "06.Q3",
+   "runs": "RUNS",
+   "rows": 1,
+   "pandas_match": "EXACT",
+   "detail": "1 rows x 2 cols identical, same order"
+  },
+  {
+   "id": "06.Q4",
+   "runs": "RUNS",
+   "rows": 5,
+   "pandas_match": "EXACT",
+   "detail": "5 rows x 3 cols identical, same order"
+  },
+  {
+   "id": "06.Q5",
+   "runs": "RUNS",
+   "rows": 7,
+   "pandas_match": "EXACT",
+   "detail": "7 rows x 6 cols identical, same order"
+  },
+  {
+   "id": "06.Q6",
+   "runs": "RUNS",
+   "rows": 2,
+   "pandas_match": "EXACT",
+   "detail": "2 rows x 3 cols identical, same order"
+  },
+  {
+   "id": "06.Q7",
+   "runs": "RUNS",
+   "rows": 17,
+   "pandas_match": "EXACT",
+   "detail": "17 rows x 3 cols identical, same order"
+  },
+  {
+   "id": "06.Q8",
+   "runs": "RUNS",
+   "rows": 1,
+   "pandas_match": "EXACT",
+   "detail": "1 rows x 4 cols identical, same order"
+  }
+ ],
+ "mismatches": {},
+ "checks": {
+  "is_capital agrees with the literal '_CAP' suffix (no LIKE wildcard)": "yes, all 552 rows",
+  "SQL files still using LIKE '%_CAP'": "none",
+  "03.Q1 EU27 countries with no capital row in 2025": [
+   "NL"
+  ],
+  "03.Q1 non-null shares 2025 (EU27 capitals)": 26,
+  "02.Q1 rows (incl. EU average row?)": "25 rows; EU average included: False",
+  "02.Q1 EU27 countries excluded (no 2015 HPI or earnings)": [
+   "Cyprus",
+   "Greece"
+  ],
+  "02.Q1 rows with NULL growth (sorted last by DuckDB)": [],
+  "02.Q1 rank ties": [],
+  "02.Q2 / 02.Q3 include EU average row": true,
+  "04.Q3 COUNT(*) vs non-null pairs used by corr()": {
+   "COUNT(*)": 27,
+   "pairs age~pps": 27,
+   "pairs age~overburden_18_24": 27,
+   "pairs age~ptir": 27
+  },
+  "04.Q2 AVG denominators vs COUNT(*) (NULLs skipped by AVG)": {
+   "countries with age 2025": 27,
+   "null pct_with_parents": 0,
+   "null overburden_18_24": 0,
+   "null net_earnings_pps": 0
+  },
+  "04 queries: EU27 countries with no 2025 age_leaving_home (silently excluded)": [],
+  "01.Q5 LIMIT 10 tie at the cut-off": "10th value 27.4, 11th value 27.3 -> tie: False",
+  "06.Q4 LIMIT 5 tie at the cut-off": "5th 19, 6th 15 -> tie: False",
+  "06.Q6 rows_used COUNT(*) includes NULL values?": "0 NULL values among 153 rows",
+  "06.Q3 2024 flagged b": "28 geos (27 countries + EU average = 28 expected)",
+  "05.Q1 inner self-join drops PT years without EU row": "none",
+  "05.Q2 LAG over gaps in years (PT/EU)": {
+   "PT": "no gaps",
+   "EU27_2020": "no gaps"
+  },
+  "05.Q3 latest complete month": [
+   [
+    "EU27_2020",
+    "2026-09"
+   ],
+   [
+    "PT",
+    "2026-09"
+   ]
+  ],
+  "integer division risk": "DuckDB '/' on BIGINT returns DOUBLE (03.Q2 rent ints) - verified by exact match of 03.Q2 with pandas float division",
+  "duckdb_inferred_types": {
+   "city_rent": {
+    "city_geo": "VARCHAR",
+    "city": "VARCHAR",
+    "country_geo": "VARCHAR",
+    "is_capital": "BOOLEAN",
+    "year": "BIGINT",
+    "rent_1bed_eur_month": "BIGINT",
+    "net_salary_eur_month": "DOUBLE",
+    "rent_share_of_net_salary_pct": "DOUBLE",
+    "net_earnings_eur_flag": "VARCHAR"
+   },
+   "country_year": {
+    "geo": "VARCHAR",
+    "country": "VARCHAR",
+    "iso2": "VARCHAR",
+    "year": "BIGINT",
+    "house_price_index_2015": "DOUBLE",
+    "house_price_index_2015_flag": "VARCHAR",
+    "net_earnings_eur": "DOUBLE",
+    "net_earnings_eur_flag": "VARCHAR",
+    "net_earnings_pps": "DOUBLE",
+    "net_earnings_pps_flag": "VARCHAR",
+    "price_to_income_vs_lt_avg": "DOUBLE",
+    "price_to_income_vs_lt_avg_flag": "VARCHAR",
+    "overburden_total": "DOUBLE",
+    "overburden_total_flag": "VARCHAR",
+    "overburden_18_24": "DOUBLE",
+    "overburden_18_24_flag": "VARCHAR",
+    "overburden_25_29": "DOUBLE",
+    "overburden_25_29_flag": "VARCHAR",
+    "age_leaving_home": "DOUBLE",
+    "age_leaving_home_flag": "VARCHAR",
+    "pct_18_34_with_parents": "DOUBLE",
+    "pct_18_34_with_parents_flag": "VARCHAR",
+    "hicp_rent_index": "DOUBLE",
+    "hicp_all_index": "DOUBLE",
+    "real_house_price_index_2015": "DOUBLE"
+   },
+   "dim_country": {
+    "geo": "VARCHAR",
+    "country": "VARCHAR",
+    "is_eu27": "BOOLEAN",
+    "is_aggregate": "BOOLEAN",
+    "iso2": "VARCHAR",
+    "in_country_year": "BOOLEAN"
+   },
+   "dim_year": {
+    "year": "BIGINT",
+    "earnings_series": "VARCHAR",
+    "in_country_year": "BOOLEAN"
+   },
+   "hicp_monthly": {
+    "geo": "VARCHAR",
+    "coicop18": "VARCHAR",
+    "coicop18_label": "VARCHAR",
+    "month": "VARCHAR",
+    "date": "DATE",
+    "year": "BIGINT",
+    "index_2015": "DOUBLE",
+    "index_2015_flag": "VARCHAR",
+    "annual_rate_pct": "DOUBLE",
+    "annual_rate_pct_flag": "VARCHAR"
+   }
+  },
+  "original_duckdb_tables_vs_csv (string compare)": {
+   "country_year": "588 rows x 25 cols: EXACT (588 rows x 25 cols identical, same order)",
+   "city_rent": "552 rows x 9 cols: EXACT (552 rows x 9 cols identical, same order)",
+   "dim_country": "52 rows x 6 cols: EXACT (52 rows x 6 cols identical, same order)",
+   "dim_year": "31 rows x 3 cols: EXACT (31 rows x 3 cols identical, same order)",
+   "hicp_monthly": "99856 rows x 10 cols: EXACT (99856 rows x 10 cols identical, same order)",
+   "long_overburden": "127035 rows x 14 cols: EXACT (127035 rows x 14 cols identical, same order)",
+   "long_net_earn": "199986 rows x 12 cols: EXACT (199986 rows x 12 cols identical, same order)",
+   "long_with_parents": "22086 rows x 12 cols: EXACT (22086 rows x 12 cols identical, same order)"
+  }
+ }
+}
